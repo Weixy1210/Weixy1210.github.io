@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0">
+    
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="description" content="博客安装配置过程的记录">
+
+
+
+
+  <meta name="keywords" content="hexo,">
+
+
+
+
+
+  <link rel="alternate" href="/default" title="世外桃源">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1">
+
+
+
+<link rel="canonical" href="http://yoursite.com/2019/07/14/hexo 博客建立/">
+
+
+<meta name="description" content="博客安装配置过程的记录">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 博客建立">
+<meta property="og:url" content="http://yoursite.com/2019/07/14/hexo 博客建立/index.html">
+<meta property="og:site_name" content="世外桃源">
+<meta property="og:description" content="博客安装配置过程的记录">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-15T14:58:03.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo 博客建立">
+<meta name="twitter:description" content="博客安装配置过程的记录">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> hexo 博客建立 - 世外桃源 </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">世外桃源</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/archives">
+                            
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          hexo 博客建立
+        
+      </h1>
+
+      <time class="post-time">
+          7月 14 2019
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
+<li><p>本地已安装git, node(v10.15.3), npm(v6.4.1)</p>
+</li>
+<li><p>远程github上已建立<code>username.github.io</code>的仓库，并开启静态页面</p>
+</li>
+<li><p>SSH已配置</p>
+</li>
+</ul>
+<h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><p><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">使用hexo+github搭建免费个人博客详细教程 - 我是小茗同学 - 博客园</a></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ol>
+<li><p>安装hexo</p>
+<p> <code>npm install -g hexo</code> 也可以 <code>npm install -g hexo-cli</code></p>
+<p> 第二种方式据说是hexo的命令行模式？将一些相关要用的功能进行了封装。然而其实没有感到差异，使用时的命令语句是一样的。</p>
+</li>
+<li><p>初始化</p>
+<p> 在博客文件夹目录下： <code>npm init</code></p>
+<p> 注：生成的文件中出现 package-lock.json ，推测是有些依赖包版本不合适导致，但暂时没有出现影响使用。</p>
+<p> 此时，通过以下命令本地查看博客是否安装完成：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo g  // 生成静态页面</span><br><span class="line">hexo s  // 开启本地服务，默认4000</span><br><span class="line">hexo s -p 数字  // 若默认4000端口占用，更换端口开启服务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更换主题</p>
+<p> 根据主题的 README.md 提示下载，下载后修改 <code>_config.yml</code> 中的 <code>theme: landscape</code> 为对应主题，再 <code>hexo g</code> 重新生成。</p>
+<p> 注1：本博客主题为：<a href="https://github.com/frostfan/hexo-theme-polarbear" target="_blank" rel="noopener">polarbear</a></p>
+<p> 注2：如果在 <code>hexo g</code> 中出现问题，可以先 <code>hexo c</code> 清理历史生成再重新生成</p>
+</li>
+<li><p>git上传</p>
+<ol>
+<li><p>安装插件 <code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li><p>配置 <code>_config.yml</code> 中的 deploy：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">	type: git</span><br><span class="line">	repository: git@github.com:username/username.github.io.git</span><br><span class="line">	branch: master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>提交代码 <code>hexo d</code></p>
+</li>
+</ol>
+</li>
+<li><p>tips </p>
+<p> 如果 npm 失败，可以尝试 cnpm 安装</p>
+</li>
+</ol>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ol>
+<li><p>新建文稿 </p>
+<p> 方式1：通过 <code>hexo new &quot;文稿标题&quot;</code> 新建</p>
+<p> 方式2：直接在 ../source/_posts 文件夹里新建，文件类型为 .md (markdown文件)</p>
+</li>
+<li><p>编辑文稿头</p>
+</li>
+</ol>
+
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/tags/hexo/">hexo</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2019/07/15/Fiddler 初探/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Fiddler 初探</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
+    
+    
+      <a class="next" href="/2019/07/14/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+    2019
+    <span class="footer-author">随云の遐想.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
