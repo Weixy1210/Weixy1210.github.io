@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,性能优化,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="使用JavaScript时的一些注意点，可以提高其运行效率，加快网页加载运行速度。">
+<meta name="keywords" content="JavaScript,性能优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高效的JavaScript">
+<meta property="og:url" content="http://yoursite.com/2017/11/03/高效的JavaScript/index.html">
+<meta property="og:site_name" content="世外桃源">
+<meta property="og:description" content="使用JavaScript时的一些注意点，可以提高其运行效率，加快网页加载运行速度。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-03T00:45:50.637Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高效的JavaScript">
+<meta name="twitter:description" content="使用JavaScript时的一些注意点，可以提高其运行效率，加快网页加载运行速度。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/03/高效的JavaScript/">
+
+
+
+
+
+  <title>高效的JavaScript | 世外桃源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">世外桃源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/03/高效的JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="随云の遐想">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世外桃源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高效的JavaScript</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-03T08:51:28+08:00">
+                2017-11-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端早读课笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">前端早读课笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  使用JavaScript时的一些注意点，可以提高其运行效率，加快网页加载运行速度。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ECMAScript"><a href="#ECMAScript" class="headerlink" title="ECMAScript"></a>ECMAScript</h1><h2 id="避免使用eval或Function构造器"><a href="#避免使用eval或Function构造器" class="headerlink" title="避免使用eval或Function构造器"></a>避免使用eval或Function构造器</h2><p>首先废话一句，根本没用过并且也不知道eval和Function是什么鬼……借由此契机，我终于给js权威指南开封了，2333……</p>
+<blockquote>
+<ul>
+<li>eval(code)<br>执行一段字符串中的JavaScript代码。code可包含一条或多条js语句，最后一条语句成为eval的返回值；若无返回值(console.log(…))，则返回undefined。</li>
+<li>Function() - 构造函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;   var f = new Function(&quot;x&quot;, &quot;y&quot;, &quot;return x*y;&quot;);</span><br><span class="line">&gt;   // 等同于</span><br><span class="line">&gt;   var f = function(x, y) &#123; return x*y; &#125;;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>  可以传入大于等于1个字符串，最后一个字符串为函数体，前面的字符串则为函数形参名称。<br>  每次调用Function()都会解析函数体，创建新的匿名函数对象。<br>  Function()在全局作用域执行，读取全局变量。</p>
+</blockquote>
+<p>先大致翻阅了解了一下，可以哪天再开个文研究研究~回归正题：</p>
+<p>从以上了解就能感受到，性能的影响在于每次调用时的解析。<br>eval被调用时直接在上下文档中进行解释，因此就无法优化相关上下文，使浏览器在运行时需要解释得内容变多。Function稍微好些，它不影响周围代码的使用，但仍运行缓慢，如果在循环中使用Function就是灾难。</p>
+<p><strong>解决建议：</strong></p>
+<ol>
+<li>改写eval<br>简而言之，eval几乎不用存在，想用前先研究一下有没有其他方法效果相同？</li>
+<li>使用function替代Function<br><code>function(){...}</code>的使用效果与<code>new Function(&quot;...&quot;)</code>完全一致</li>
+</ol>
+<p>可见，本宝宝发现自己根本没见识过这两个东东也是有道理的，呵呵…</p>
+<h2 id="不要使用with"><a href="#不要使用with" class="headerlink" title="不要使用with"></a>不要使用with</h2><p>666，这个也没用过。</p>
+<p>with会在引用变量时为脚本引擎构造一个额外的作用域，这个作用域不能被编译期获知，所以编译器不会像优化普通的作用域（比如由函数创建的作用域）那样优化它，从而影响性能。</p>
+<p>with的使用举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with(test.information.settings.files) &#123;</span><br><span class="line">    primary = &apos;names&apos;;</span><br><span class="line">    secondary = &apos;roles&apos;;</span><br><span class="line">    tertiary = &apos;references&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更有效率的做法 —— 使用普通变量来引用对象，然后通过这个变量来访问其属性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var testObject = test.information.settings.files;</span><br><span class="line">testObject.primary = &apos;names&apos;;</span><br><span class="line">testObject.secondary = &apos;roles&apos;;</span><br><span class="line">testObject.tertiary = &apos;references&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>显然这么搞我更熟悉，2333……</p>
+<h2 id="不要在要求性能的函数中使用-try-catch-finally"><a href="#不要在要求性能的函数中使用-try-catch-finally" class="headerlink" title="不要在要求性能的函数中使用 try-catch-finally"></a>不要在要求性能的函数中使用 try-catch-finally</h2><p>由于还没在js中用过这个，但前一阵子在python中有了体验：写在一个循环里，销魂啊，循环了二十次左右后pythonw.exe直接崩了……后来查了资料，改用if判断提前规避错误了……</p>
+<p>try-catch-finally在运行时会在当前作用域创建一个新变量，每次catch子句运行的时候，这个变量会引用捕捉到的异常对象。这个变量在catch子句开始的时候创建，并在这个子句结束的时候销毁，即在脚本运行时创建和销毁，所以带来了性能问题。</p>
+<p>异常处理应尽可能地放在更高层次的脚本中，使异常可能不会频繁发生；或者可以先检查操作是否可行，以避免异常发生。（啊，这不就是本宝宝自己想出来的if判断，本宝宝真机智~）</p>
+<p>虽然不够应景，但耐不住感触深啊。pia一下我当时老崩的python代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import arcpy</span><br><span class="line">from arcpy import env</span><br><span class="line">from arcpy.sa import *</span><br><span class="line">from arcpy import env</span><br><span class="line">env.workspace = &quot;E:/weixy/10硕士毕设/数据&quot;</span><br><span class="line">arcpy.CheckOutExtension(&quot;Spatial&quot;)</span><br><span class="line">day = 1</span><br><span class="line">year = 2001</span><br><span class="line">while year &lt;= 2014:</span><br><span class="line">    if day &lt; 10:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;00&quot;+&quot;%i&quot;%day</span><br><span class="line">    elif day &lt; 100:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;0&quot;+&quot;%i&quot;%day</span><br><span class="line">    else:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;%i&quot;%day</span><br><span class="line">    try:</span><br><span class="line">        inRaster = &quot;/2001-2015白天地表温度/MOD11A2_&quot;+day_string+&quot;.LST_Day_1km.tif&quot;</span><br><span class="line">        outExtractByMask = ExtractByMask(inRaster, inRasterborder)</span><br><span class="line">        FinalResult = Con(outExtractByMask, outExtractByMask * 0.02, &quot;&quot;, &quot;VALUE &lt;&gt; 0&quot;)</span><br><span class="line">        FinalResult.save(&quot;E:/weixy/10硕士毕设/数据/青海湖2001-2014白天地表温度/MOD11A2_&quot;+day_string+&quot;.LST_Day_1km.tif&quot;)</span><br><span class="line">    except:</span><br><span class="line">        print day_string</span><br><span class="line">    else:</span><br><span class="line">        del FinalResult</span><br><span class="line">    finally:</span><br><span class="line">        day = day + 8</span><br><span class="line">        if day &gt; 365:</span><br><span class="line">            year = year + 1</span><br><span class="line">            day = 1</span><br><span class="line">arcpy.CheckInExtension(&quot;Spatial&quot;)</span><br><span class="line">print &apos;finished&apos;</span><br></pre></td></tr></table></figure>
+
+<p>这个是改进后的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">import os, re</span><br><span class="line">import arcpy</span><br><span class="line">from arcpy.sa import *</span><br><span class="line">from arcpy import env</span><br><span class="line">env.workspace = &quot;H:/原始数据与预处理数据/MOD15A2/2001-2016 LAI/&quot;</span><br><span class="line">arcpy.CheckOutExtension(&quot;Spatial&quot;)</span><br><span class="line">inRasterborder = &quot;E:/weixy/10硕士毕设/数据/qhhl坐标.shp&quot;</span><br><span class="line"># 生成特定日期的编号</span><br><span class="line">def dayString(day, year):</span><br><span class="line">    if day &lt; 10:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;00&quot;+&quot;%i&quot;%day</span><br><span class="line">    elif day &lt; 100:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;0&quot;+&quot;%i&quot;%day</span><br><span class="line">    else:</span><br><span class="line">        day_string=&quot;%i&quot;%year+&quot;%i&quot;%day</span><br><span class="line">    return day_string</span><br><span class="line"># 下一日期</span><br><span class="line">def nextDay(day_string):</span><br><span class="line">    day = int(day_string) % 1000</span><br><span class="line">    year = int(day_string) / 1000</span><br><span class="line">    day = day + 8</span><br><span class="line">    if day &gt; 365:</span><br><span class="line">        year = year + 1</span><br><span class="line">        day = 1</span><br><span class="line">    return dayString(day, year)</span><br><span class="line"># main</span><br><span class="line">try:</span><br><span class="line">    day_string = dayString(1, 2001)</span><br><span class="line">    while int(day_string) &lt; 2017001:</span><br><span class="line">        sta = 0</span><br><span class="line">        # 遍历数据文件夹寻找该文件</span><br><span class="line">        for theFile in os.listdir(&apos;H:/原始数据与预处理数据/MOD15A2/2001-2016 LAI&apos;):</span><br><span class="line">            if re.search(day_string, theFile) != None:</span><br><span class="line">                sta = 1</span><br><span class="line">                # 找到该日的图像，进行GIS处理</span><br><span class="line">                inRaster = &quot;MOD15A2_&quot;+day_string+&quot;.Lai_1km.tif&quot;</span><br><span class="line">                outExtractByMask = ExtractByMask(inRaster, inRasterborder)</span><br><span class="line">                FinalResult = Con(outExtractByMask, outExtractByMask * 0.1, &quot;&quot;, &quot;VALUE &lt;= 100&quot;)</span><br><span class="line">                FinalResult.save(&quot;H:/原始数据与预处理数据/青海湖2001-2016叶面积指数/MOD15A2_&quot;+day_string+&quot;.Lai_1km.tif&quot;)</span><br><span class="line">                # 指向下一日</span><br><span class="line">                day_string = nextDay(day_string)</span><br><span class="line">                break</span><br><span class="line">        # 始终没有找到图像</span><br><span class="line">        if sta == 0:</span><br><span class="line">            print &quot;lost&quot; + day_string</span><br><span class="line">            day_string = nextDay(day_string)</span><br><span class="line">        else:</span><br><span class="line">            sta = 0</span><br><span class="line">except:                                                             </span><br><span class="line">    print arcpy.GetMessages()</span><br><span class="line">else:</span><br><span class="line">    del FinalResult  # 删除变量占用</span><br><span class="line">finally:</span><br><span class="line">    arcpy.CheckInExtension(&quot;Spatial&quot;)</span><br><span class="line">    print &apos;finished&apos;</span><br></pre></td></tr></table></figure>
+
+<h2 id="隔离eval和with的使用"><a href="#隔离eval和with的使用" class="headerlink" title="隔离eval和with的使用"></a>隔离eval和with的使用</h2><p>前文说了尽可能的少用或不用eval和with，但在必需使用它们时，就要注意了：</p>
+<ul>
+<li>不要在循环中重复执行它们，或者其他的反复调用它们</li>
+<li>它们只适合在执行一次或很少几次的代码中使用</li>
+<li>把它们与其它代码隔离开来，这样就不会影响到其它代码的性能</li>
+<li>可以把它们放在一个顶层函数中，或者只运行一次并把结果保存下来，以便稍后可以使用其结果而不必再运行这些代码</li>
+</ul>
+<p>另外某些浏览器解析try-catch-finally结构时会对性能产生影响，包括 Opera，所以最好以同样的方式对其进行隔离。</p>
+<h2 id="尽量不用全局变量"><a href="#尽量不用全局变量" class="headerlink" title="尽量不用全局变量"></a>尽量不用全局变量</h2><p>我就是走全局变量的懒人，要改！</p>
+<p>全局变量对性能的影响：</p>
+<ul>
+<li>如果代码在函数或另一个作用域中引用全局变量，脚本引擎会依次通过每个作用域直到全局作用域进行查询，而局部变量找起来就会快得多。</li>
+<li>全局作用域中的变量存在于脚本的整个生命周期，而局部变量会在离开局部作用域的时候被销毁，它们占用的内存可以被垃圾收集器回收。</li>
+<li>全局作用域由window对象共享，也就是说它本质上是两个作用域而不是一个。在全局作用域中，变量总是通过其名称来定位，而不是像局部变量那样经过优化，通过预定义的索引来定位。这最终导致脚本引擎需要花更多时间来找到全局变量。</li>
+</ul>
+<p>*函数通常也在全局作用域中创建。因此一个函数调另一个函数，另一个函数再接着调其它函数，也会增加脚本引擎的运行时间。</p>
+<p>低效率版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var i, s = &apos;&apos;;</span><br><span class="line">function testfunction() &#123;</span><br><span class="line">  for(i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">    s += i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">testfunction();</span><br></pre></td></tr></table></figure>
+
+<p>高效率版（快30%左右）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function testfunction() &#123;</span><br><span class="line">  var i, s = &apos;&apos;;</span><br><span class="line">  for(i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">    s += i;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">testfunction();</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意对象的隐式转换"><a href="#注意对象的隐式转换" class="headerlink" title="注意对象的隐式转换"></a>注意对象的隐式转换</h2><p>额，这点也是我的恶习……从没注意过，甚至一度不解过为什么要有new的形式</p>
+<p>字面量（如字符串、数、布尔值等），在ECMAScript中有两种表现形式：作为值创建、作为对象创建。例如：<code>var oString = &#39;some content&#39;;</code>：创建了一个字符串值；<code>var oString = new String(&#39;some content&#39;);</code>：创建了等价的字符串对象。</p>
+<p><strong>所有属性和方法都是在字符串对象而不是值上定义的。</strong><br>如果对字符串值调用属性和方法，ECMAScript引擎会用相同的字符串值隐式地创建一个新的字符串对象，然后才调用属性或方法。并且，这个对象仅用于这一次需求，如果下次再对字符串值调用某个方法，会再次类似地创建一个新的字符串对象。</p>
+<p>低效率版。每次访问length属性和调用charAt方法的时候都会创建对象，脚本引擎总共会创建21个新的字符串对象（terrible…）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;0123456789&apos;;</span><br><span class="line">for(var i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">  s.charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>高效率版。只创建了一个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var s = new String(&apos;0123456789&apos;);</span><br><span class="line">for(var i = 0; i &lt; s.length; i++) &#123;</span><br><span class="line">  s.charAt(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在要求性能的函数中避免使用-for-in"><a href="#在要求性能的函数中避免使用-for-in" class="headerlink" title="在要求性能的函数中避免使用 for-in"></a>在要求性能的函数中避免使用 for-in</h2><p>不太习惯for-in循环，但一直以为这是一种高级的写法，如今看来，哈哈~</p>
+<p>for-in循环需要脚本引擎为所有可枚举的属性创建一个列表，然后检查其中的重复项，之后才开始遍历。所以当脚本本身已经知道需要遍历哪些属性的时候（如所需遍历属性名称为有序数字的情况），使用简单的for循环更为合适。比如数组、伪数组（如由DOM创建的NodeList）</p>
+<p>低效率版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var oSum = 0;</span><br><span class="line">for(var i in oArray) &#123;</span><br><span class="line">  oSum += oArray[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>高效率版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var oSum = 0;</span><br><span class="line">var oLength = oArray.length;</span><br><span class="line">for(var i = 0; i &lt; oLength; i++) &#123;</span><br><span class="line">  oSum += oArray[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用累加形式连接字符串"><a href="#使用累加形式连接字符串" class="headerlink" title="使用累加形式连接字符串"></a>使用累加形式连接字符串</h2><p>再次，膝盖中一箭……</p>
+<p>字符串连接非常消耗性能。使用+运算符不会直接把结果赋值给变量，而会在内存中创建一个新的字符串用于保存结果，再将这个新的字符串赋值给变量。</p>
+<p>低效率版：<code>a += &#39;x&#39; + &#39;y&#39;;</code>。这段代码首先在内存中创建一个临时的字符串保存连接的结果’xy’，然后将它连接到a的当前值，再将最终的连接结果赋值给a。</p>
+<p>高效率版。因为每次都是直接赋值，所以不会使用临时字符串，运行速度会快20%，并且消耗内存更少：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a += &apos;x&apos;;</span><br><span class="line">a += &apos;y&apos;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="基本运算比调用函数更快"><a href="#基本运算比调用函数更快" class="headerlink" title="基本运算比调用函数更快"></a>基本运算比调用函数更快</h2><p>比如：直接通过数组的尾部索引添加元素 比 对数组调用push方法 更佳；简单的数学计算 比 调用Math对象的方法 更佳。</p>
+<p>低效率版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.push(v);</span><br><span class="line">var min = Math.min(a,b);</span><br></pre></td></tr></table></figure>
+
+<p>高效率版：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr[arr.length] = v;</span><br><span class="line">var min = a &lt; b ? a : b;</span><br></pre></td></tr></table></figure>
+
+<h2 id="为setTimeout-和setInterval-传入函数而不是字符串"><a href="#为setTimeout-和setInterval-传入函数而不是字符串" class="headerlink" title="为setTimeout()和setInterval()传入函数而不是字符串"></a>为setTimeout()和setInterval()传入函数而不是字符串</h2><p>即，传入定义好的函数的函数名：<code>setInterval(f1, 1000);</code><br>或者匿名函数：<code>setInterval(function(){...}, 1000);</code><br>不要用<code>setInterval(&#39;f1()&#39;, 1000);</code>这类的字符串形式。</p>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>总的来说，有三个主要因素会导致DOM的性能不佳。</p>
+<ul>
+<li>脚本进行了大量的DOM操作，比如通过收到的数据创建一棵树。</li>
+<li>脚本触发了太多重排或者重绘。</li>
+<li>脚本使用了低性能的方法来定位DOM树中的节点。</li>
+</ul>
+<h2 id="重绘和重排"><a href="#重绘和重排" class="headerlink" title="重绘和重排"></a>重绘和重排</h2><p>重绘：<br>某元素从可见变为不可见，或者反之，但没有改变文档布局。例如：为某个元素添加轮廓线，改变背景色或者改变visibility样式等。<br>重绘对性能的消耗在于：它需要引擎搜索所有元素来决定什么是可见的，什么应该显示出来。</p>
+<p>重排（更耗性能）：<br>对DOM树进行了改动操作，或者某个元素样式变动时改变了文档布局。例如：改变元素的className属性<em>（这个为什么会重排？）</em>，改变浏览器窗口的大小。<br>重排对性能的消耗在于：它相当于重新布局整个页面（父元素的重排会引起子元素的重排，某个重排元素之后的元素也需要重新计算新的布局位置，子孙元素大小的改变也会导致祖先元素的重排……），即：<strong>牵一发而动全身</strong>。</p>
+<p>以下是对一些重排或重绘操作的<strong>优化</strong>建议：</p>
+<h3 id="1-将重排数量降到最低"><a href="#1-将重排数量降到最低" class="headerlink" title="1. 将重排数量降到最低"></a>1. 将重排数量降到最低</h3><p>首先必须承认，重排是不能完全避免的，比如动画。所以要保证脚本跑得飞快，就必须在保证相同整体效果的前提下将重排保持在最低限度。<br>浏览器可以选择在脚本线程完成后进行重排，显示变化。Opera会等到发生了足够多的变化，经过了一定的时间，或者脚本线程结束，再重排。也就是说，如果在同一个线程中发生的变化足够快，它们就只会触发一次重排。然而，Opera运行在不同速度的设备上，这种现象并不保证一定会发生。<br>有些元素在重排时，显示速度慢于其它元素，要注意规避。比如，重排一个table需要3倍于等效块元素显示的时间。</p>
+<h3 id="2-最小重排"><a href="#2-最小重排" class="headerlink" title="2. 最小重排"></a>2. 最小重排</h3><p>一般的重排会影响到整个文档，文档中需要重排的东西越多，重排花的时间就越长。<br>然而，绝对定位(absolute)和固定定位(fixed)的元素不会影响主文档的布局，所以对它们的重排不会引起其它部分的连锁反应。文档中在它们之后的内容可能需要重绘来呈现变化，但这也远比一个完整的重排好得多。<br>因此，动画不需要应用于整个文档，它最好只应用在一个固定位置的元素上。</p>
+<h3 id="3-关于修改文档树"><a href="#3-关于修改文档树" class="headerlink" title="3. 关于修改文档树"></a>3. 关于修改文档树</h3><p>修改DOM树（添加新的节点、改变文本节点的值或者修改各种属性）会导致重排，而多次连续地改变可能导致多次重排。<br>因此，最好在一段未显示出来的DOM树片段上进行多次改变，然后用一个单一的操作把改变应用在文档的DOM中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var docFragm = document.createDocumentFragment();</span><br><span class="line">var elem, contents;</span><br><span class="line">for(var i = 0; i &lt; textlist.length; i++) &#123;</span><br><span class="line">  elem = document.createElement(&apos;p&apos;);</span><br><span class="line">  contents = document.createTextNode(textlist[i]);</span><br><span class="line">  elem.appendChild(contents);</span><br><span class="line">  docFragm.appendChild(elem);</span><br><span class="line">&#125;</span><br><span class="line">document.body.appendChild(docFragm);</span><br></pre></td></tr></table></figure>
+
+<p>修改文档树也可以通过克隆实现（注意如果元素中包含任何形式的控制，或者其本身或子元素存在事件响应，则不能使用这个方法，因为这些附着关系不会被克隆）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var original = document.getElementById(&apos;container&apos;);</span><br><span class="line">var cloned = original.cloneNode(true);</span><br><span class="line">cloned.setAttribute(&apos;width&apos;, &apos;50%&apos;);</span><br><span class="line">var elem, contents;</span><br><span class="line">for(var i = 0; i &lt; textlist.length; i++) &#123;</span><br><span class="line">  elem = document.createElement(&apos;p&apos;);</span><br><span class="line">  contents = document.createTextNode(textlist[i]);</span><br><span class="line">  elem.appendChild(contents);</span><br><span class="line">  cloned.appendChild(elem);</span><br><span class="line">&#125;</span><br><span class="line">original.parentNode.replaceChild(cloned, original);</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-修改不可见的元素"><a href="#4-修改不可见的元素" class="headerlink" title="4. 修改不可见的元素"></a>4. 修改不可见的元素</h3><p>如果某个元素的display样式设置为none，就不会对其进行重绘，哪怕它的内容发生改变 —— 这是一种优势。<br>因此，如果需要对某个元素或者它的子元素进行改变，而且这些改变又不能合并在一个单独的重绘中，那就可以先设置这个元素的样式为<code>display:none</code>，然后改变它，再把它设置为普通的显示状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var posElem = document.getElementById(&apos;animation&apos;);</span><br><span class="line">posElem.style.display = &apos;none&apos;;</span><br><span class="line">posElem.appendChild(newNodes);</span><br><span class="line">posElem.style.width = &apos;10em&apos;;</span><br><span class="line">...  // 其他变化</span><br><span class="line">posElem.style.display = &apos;block&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>不过这会造成两次额外的重排，一次是在隐藏元素的时候，另一次是它再次显示出来的时候，所以需要权衡什么时候需要使用这种方法，什么时候不用。<br>另外，这样做也可能意外导致滚动条跳跃，不过把这种方式应用于固定位置的元素就不会导致难看的效果。</p>
+<h3 id="5-关于测量元素"><a href="#5-关于测量元素" class="headerlink" title="5. 关于测量元素"></a>5. 关于测量元素</h3><p>一般而言，浏览器会缓存一些变化，然后在这些变化都完成之后只进行一次重排。<br>但是，测量元素会导致浏览器<strong>强制</strong>重排（如，使用offsetWidth这样的属性，或者getComputedStyle这样的方法）。一旦调用，就改变了浏览器的缓存，从而触发重排，即使这不会引起明显的重绘。<br>因此，如果这些测量数据需要反复使用，建议仅测量一次，然后将结果保存起来以备后用。</p>
+<h3 id="6-多项样式的一起改变"><a href="#6-多项样式的一起改变" class="headerlink" title="6. 多项样式的一起改变"></a>6. 多项样式的一起改变</h3><p>如果需要对某个元素一次性改变多个CSS样式，不宜一个个地去指定样式，可以使用以下两种方式：<br>1.如果需要变化的样式是已知的，则可以定义一个包含这些样式变化的class，通过修改元素的class实现。<br>2.如果变化的样式是未知的，例如动画，则可以为元素定义一个新的样式属性，通过style对象的cssText属性实现，或者通过setAttribute实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var posElem = document.getElementById(&apos;animation&apos;);</span><br><span class="line">var newStyle = &apos;background: &apos; + newBack + &apos;;&apos; +</span><br><span class="line">  &apos;color: &apos; + newColor + &apos;;&apos; +</span><br><span class="line">  &apos;border: &apos; + newBorder + &apos;;&apos;;</span><br><span class="line">if(typeof(posElem.style.cssText) != &apos;undefined&apos;) &#123;</span><br><span class="line">  posElem.style.cssText = newStyle;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  posElem.setAttribute(&apos;style&apos;, newStyle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="平滑度换速度"><a href="#平滑度换速度" class="headerlink" title="平滑度换速度"></a>平滑度换速度</h2><p>开发者总是希望通过使用更小的间隔时间和更小的变化，让动画尽可能平滑。<br>但是，10ms几乎已经是浏览器能在不100%占用大多数台式机CPU的情况能实现的最小时间间隔。对于多数浏览器来说，每秒进行100次重排实在太多了。对于低功耗计算机或低功耗设备上的浏览器，这样的动画只会给人以缓慢和卡顿的感觉。<br>所以有必要权衡平滑度与速度的关系，适当地使用动画的平滑度来换取速度。比如将时间间隔改变为50ms，动画每次移动5个像素，这样需要的处理能力更少，也会让动画在低功耗处理器上运行起来快得多。</p>
+<h2 id="关于遍历检索特定节点"><a href="#关于遍历检索特定节点" class="headerlink" title="关于遍历检索特定节点"></a>关于遍历检索特定节点</h2><p>这里涉及到了以前不曾关注的DOM遍历问题，有必要完整学习一下。（一些值得注意的方法：DOM2 Traversal TreeWalker、XPath）</p>
+<h3 id="1-避免检索大量节点"><a href="#1-避免检索大量节点" class="headerlink" title="1. 避免检索大量节点"></a>1. 避免检索大量节点</h3><p>在试图找到某个特定节点，或者某个节点的子集时，应该使用内置的方法和DOM集合来缩小搜索范围，使之在尽可能少的节点内进行搜索。</p>
+<blockquote>
+<p>这里讨论的是js的检索，但是一般实践中我用jquery更多，不知道$选择器是怎样操作的，写全完整路径更优还是模糊范围更优？</p>
+</blockquote>
+<h3 id="2-通过XPath提升检索速度"><a href="#2-通过XPath提升检索速度" class="headerlink" title="2. 通过XPath提升检索速度"></a>2. 通过XPath提升检索速度</h3><p>假设需要在一个包含了上千元素的文档中获取h2-h4元素，它们散落在文档各处，没有任何适当的结构，所以不能用递归来获得正确的顺序。<br>传统的DOM遍历方法，因为文档中元素过多，一个一个遍历会导致显著的延迟：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var allElements = document.getElementsByTagName(&apos;*&apos;);</span><br><span class="line">for(var i = 0; i &lt; allElements.length; i++) &#123;</span><br><span class="line">  if(allElements[i].tagName.match(/^h[2-4]$/i)) &#123;</span><br><span class="line">    // …</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用XPath可以优化查询引擎，查询速度甚至可以提升高达两个数量级：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var headings = document.evaluate(&apos;//h2|//h3|//h4&apos;, document, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null);</span><br><span class="line">var oneheading;</span><br><span class="line">while(oneheading = headings.iterateNext()) &#123;</span><br><span class="line">  // …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>*可以通过<code>if( document.evaluate )</code>来判断浏览器是否支持XPath。</p>
+<h3 id="3-避免在遍历DOM的时候进行修改"><a href="#3-避免在遍历DOM的时候进行修改" class="headerlink" title="3. 避免在遍历DOM的时候进行修改"></a>3. 避免在遍历DOM的时候进行修改</h3><p>对于某些类型的DOM集合，如果你的脚本在检索它的时候改变了相关元素，集合会立即发生变化而不会等你的脚本运行结束。如：childNodes集合，以及getElementsByTagName返回的节点列表。<br>对于这样的集合，如果在检索时又向里添加元素，那可能会导致一个无限循环，因为在到达终点前不断的往集合内添加项。<br>另外，更重要的是：这些集合原可以被优化以提升性能，它们能记住长度和脚本引用的最后一个索引，以便在增加索引的时候，能迅速引用下一个节点。但是如果你修改了DOM树的任意部分（哪怕它不在集合中），集合就必须重新寻找新的条目。这样做的话，它就不能记住最后的索引或长度，因为这些可能已经变化，之前所做的优化也就失效了。</p>
+<p><strong>解决方案：</strong></p>
+<p>先建立一个静态元素列表用于修改，然后遍历这个静态列表来进行修改，以此避免对getElementsByTagName返回的列表进行修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var allPara = document.getElementsByTagName(&apos;p&apos;);</span><br><span class="line">var collectTemp = [];</span><br><span class="line">for(var i = 0; i &lt; allPara.length; i++) &#123;</span><br><span class="line">  collectTemp[collectTemp.length] = allPara[i];</span><br><span class="line">&#125;</span><br><span class="line">for(i = 0; i &lt; collectTemp.length; i++) &#123;</span><br><span class="line">  collectTemp[i].appendChild(document.createTextNode(i));</span><br><span class="line">&#125;</span><br><span class="line">// 这里难道没有一个再把collectTemp赋值回allPara的操作吗？不然改动怎么生效？</span><br><span class="line">collectTemp = null;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-在脚本中用变量缓存检索到的DOM值"><a href="#4-在脚本中用变量缓存检索到的DOM值" class="headerlink" title="4. 在脚本中用变量缓存检索到的DOM值"></a>4. 在脚本中用变量缓存检索到的DOM值</h3><p>DOM返回的某些值是不缓存的，它们会在再次调用的时候重新计算（如getElementById方法）。因此建议用变量保存返回值，以便后续的多次使用（命令运行的速度会快五到十倍）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var sample = document.getElementById(&apos;test&apos;);</span><br><span class="line">sample.property1 = &apos;value1&apos;;</span><br><span class="line">sample.property2 = &apos;value2&apos;;</span><br><span class="line">sample.property3 = &apos;value3&apos;;</span><br><span class="line">sample.property4 = &apos;value4&apos;;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h1 id="文档加载"><a href="#文档加载" class="headerlink" title="文档加载"></a>文档加载</h1><h2 id="避免在多个文档间保持同一个引用"><a href="#避免在多个文档间保持同一个引用" class="headerlink" title="避免在多个文档间保持同一个引用"></a>避免在多个文档间保持同一个引用</h2><p>如果一个文档访问了另一个文档的节点或者对象，应该避免在脚本使用完它们之后仍然保留它们的引用。如果某个引用保存在当前文档的全局变量中，或者保存在某个长期存在的对象的属性中，通过将其设置为null，或者通过delete来清除它。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var remoteDoc = parent.frames[&apos;sideframe&apos;].document;</span><br><span class="line">var remoteContainer = remoteDoc.getElementById(&apos;content&apos;);</span><br><span class="line">var newPara = remoteDoc.createElement(&apos;p&apos;);</span><br><span class="line">newPara.appendChild(remoteDoc.createTextNode(&apos;new content&apos;));</span><br><span class="line">remoteContainer.appendChild(newPara);</span><br><span class="line">// 清除引用</span><br><span class="line">remoteDoc = null;</span><br><span class="line">remoteContainer = null;</span><br><span class="line">newPara = null;</span><br></pre></td></tr></table></figure>
+
+<p>原因：<br>如果另一个文档已经销毁（比如原来显示在弹出窗中而现在这个窗口关闭了），当前文档中保存的引用通常仍然会使其DOM树或者脚本环境在RAM中存在，哪怕文档本身已经不在加载状态了。<br>在框架页面，内联框架页面或object元素中同样存在这个问题<em>（额，啥框架，比如说？还是不太懂这方面的啊）</em>。</p>
+<h2 id="关于浏览器的快速历史导航功能"><a href="#关于浏览器的快速历史导航功能" class="headerlink" title="关于浏览器的快速历史导航功能"></a>关于浏览器的快速历史导航功能</h2><p>Opera（以及很多其它浏览器）默认使用快速历史导航，即：当用户在浏览器历史上前进或回退的时候，页面的状态及其中的脚本其实都被保存了。当用户回到某个页面的时候，它会像从未离开过一样继续运行，文档不会再次加载和初始化。<br>快速历史导航有助于浏览器实现对用户的快速响应，使加载缓慢的Web应用在导航过程中表现得更好。因此，我们要做的就是<strong>使脚本尽量避免做出会导致这种行为失败的事情</strong>。例如：在表单提交时禁用表单控件、菜单项被点击之后就不再有效、离开页面时的淡出效果使内容模糊不清或不可见。<br>使用onunload监听器是比较简单的解决办法，可以通过它重置淡出效果，或者使表单控件变为可用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.onunload = function () &#123;</span><br><span class="line">  document.body.style.opacity = &apos;1&apos;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但是，某些浏览器（Firefox、Safari）使用unload监听器会导致快速历史导航失效。此外，禁用提交按钮在Opera中也会导致快速历史导航失效。</p>
+<h2 id="使用XMLHttpRequest"><a href="#使用XMLHttpRequest" class="headerlink" title="使用XMLHttpRequest"></a>使用XMLHttpRequest</h2><p>该方法能有效减少从服务器接收的内容，同时避免页面加载带来的脚本环境的破坏和再造。最初，页面以正常的方式加载，之后再通过XMLHttpRequest来加载最小需求的新内容。这会让JavaScript环境保持下来。<br><em>这里的js环境指执行环境（Execution context，EC），或称执行上下文，可以深扒一下</em></p>
+<p>不过需要注意的是，这并非对所有项目都适用，而且这种访求可能会导致问题——它完全打破了历史导航，虽然可以通过将信息保存在内联框架中来伪造历史，但这违背了使用XMLHttpReqest的首要目的。因此，<strong>请谨慎地</strong>，只在它所造成的变化不需要回退的时候使用它。<br>这种方法也有可能对辅助设备<em>（什么是辅助设备？）</em>造成混乱，因为辅助设备感受不到页面上的DOM的变化。所以最好在确保不会出现问题的情况下使用这个方法。</p>
+<p>对于不允许JavaScript，或者浏览器不支持XMLHttpReqeust的情况，可以使用一个正常的链接，指向新页面；然后为这个链接添加事件处理函数，在链接被点击的时候检查是否支持XMLHttpReqest；如果支持，则加载新数据并阻止链接的默认行为。</p>
+<p>XMLHttpReqest获得的数据加载完成，替换了页面的某些内容后，就可以销毁请求对象，以允许垃圾回收释放内存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;nextlink&apos;).onclick = function() &#123;</span><br><span class="line">  // 判断是否支持XMLHttpReqeust</span><br><span class="line">  if(!window.XMLHttpRequest) &#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  var request = new XMLHttpRequest();</span><br><span class="line">  request.onreadystatechange = function() &#123;</span><br><span class="line">    if( request.readyState != 4 ) &#123;</span><br><span class="line">      return;</span><br><span class="line">    &#125;</span><br><span class="line">    var useResponse = request.responseText.replace(/^[\w\W]*&lt;div id=&quot;container&quot;&gt;|&lt;\/div&gt;\s*&lt;\/body&gt;[\w\W]*$/g , &apos;&apos;);</span><br><span class="line">    document.getElementById(&apos;container&apos;).innerHTML = useResponse;</span><br><span class="line">    // 销毁对象</span><br><span class="line">    request.onreadystatechange = null;</span><br><span class="line">    request = null;</span><br><span class="line">  &#125;;</span><br><span class="line">  request.open(&apos;GET&apos;, this.href, true);</span><br><span class="line">  request.send(null);</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态创建script元素"><a href="#动态创建script元素" class="headerlink" title="动态创建script元素"></a>动态创建script元素</h2><p>最好不要加载当前页面不使用的脚本，可以通过<strong>动态加载脚本</strong>的方式，在实际用到的时候才创建脚本元素。</p>
+<p>理论上，在页面加载完成之后，可以通过script元素来加载额外的脚本并通过DOM添加到文档中，但是实际上可能是在浏览器上请求而不是立即加载脚本。<br>另外，记得用转义斜杠以免过早结果当前脚本：<code>&lt;\/script&gt;</code></p>
+<p><em>具体动态加载方式再开坑</em></p>
+<h2 id="location-replace-控制历史记录"><a href="#location-replace-控制历史记录" class="headerlink" title="location.replace()控制历史记录"></a>location.replace()控制历史记录</h2><p>有时我们需要使用脚本来改变页面地址。最典型的做法是给location.href赋予一个新地地址。但这样做会添加一个历史记录，同时加载一个新的页面，这和激活一个普通的链接一样。</p>
+<p>在某些情况下，并不希望出现一条额外的历史记录，因为用户不需要回到之前的页面。如果在内存特别重要的环境下，这样做就非常有用。<br>当前页面使用的内存可以通过替换历史记录来得到重新利用，使用<code>location.replace(&#39;newpage.html&#39;)</code>方法就可以做到。<br>但请注意，该页可能仍然保留在缓存中，并可能在那里使用内存，但不会用到像保存在历史记录里那么多。</p>
+<p><strong>最后的感慨：</strong>当初简单学习了一下js，就用jquery库了，文中很多关于DOM的操作都是没有接触过的，看的时候往往理解不能很深；推及到自己实际使用吧，又因为jquery的集成不能得知其中详细，感觉很是不痛快，要补！</p>
+<blockquote>
+<p>致谢：<br>(高效的JavaScript)[<a href="http://www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html]" target="_blank" rel="noopener">http://www.zcfy.cc/article/dev-opera-efficient-javascript-2320.html]</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/性能优化/" rel="tag"># 性能优化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/30/Async与Await解读/" rel="next" title="Async与Await解读">
+                <i class="fa fa-chevron-left"></i> Async与Await解读
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/04/调皮的音响控制键/" rel="prev" title="调皮的音响控制键">
+                调皮的音响控制键 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">随云の遐想</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECMAScript"><span class="nav-number">1.</span> <span class="nav-text">ECMAScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#避免使用eval或Function构造器"><span class="nav-number">1.1.</span> <span class="nav-text">避免使用eval或Function构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要使用with"><span class="nav-number">1.2.</span> <span class="nav-text">不要使用with</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不要在要求性能的函数中使用-try-catch-finally"><span class="nav-number">1.3.</span> <span class="nav-text">不要在要求性能的函数中使用 try-catch-finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔离eval和with的使用"><span class="nav-number">1.4.</span> <span class="nav-text">隔离eval和with的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尽量不用全局变量"><span class="nav-number">1.5.</span> <span class="nav-text">尽量不用全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意对象的隐式转换"><span class="nav-number">1.6.</span> <span class="nav-text">注意对象的隐式转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在要求性能的函数中避免使用-for-in"><span class="nav-number">1.7.</span> <span class="nav-text">在要求性能的函数中避免使用 for-in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用累加形式连接字符串"><span class="nav-number">1.8.</span> <span class="nav-text">使用累加形式连接字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本运算比调用函数更快"><span class="nav-number">1.9.</span> <span class="nav-text">基本运算比调用函数更快</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为setTimeout-和setInterval-传入函数而不是字符串"><span class="nav-number">1.10.</span> <span class="nav-text">为setTimeout()和setInterval()传入函数而不是字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM"><span class="nav-number">2.</span> <span class="nav-text">DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#重绘和重排"><span class="nav-number">2.1.</span> <span class="nav-text">重绘和重排</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-将重排数量降到最低"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. 将重排数量降到最低</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-最小重排"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. 最小重排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-关于修改文档树"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. 关于修改文档树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改不可见的元素"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 修改不可见的元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-关于测量元素"><span class="nav-number">2.1.5.</span> <span class="nav-text">5. 关于测量元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多项样式的一起改变"><span class="nav-number">2.1.6.</span> <span class="nav-text">6. 多项样式的一起改变</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平滑度换速度"><span class="nav-number">2.2.</span> <span class="nav-text">平滑度换速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于遍历检索特定节点"><span class="nav-number">2.3.</span> <span class="nav-text">关于遍历检索特定节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-避免检索大量节点"><span class="nav-number">2.3.1.</span> <span class="nav-text">1. 避免检索大量节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-通过XPath提升检索速度"><span class="nav-number">2.3.2.</span> <span class="nav-text">2. 通过XPath提升检索速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-避免在遍历DOM的时候进行修改"><span class="nav-number">2.3.3.</span> <span class="nav-text">3. 避免在遍历DOM的时候进行修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-在脚本中用变量缓存检索到的DOM值"><span class="nav-number">2.3.4.</span> <span class="nav-text">4. 在脚本中用变量缓存检索到的DOM值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档加载"><span class="nav-number">3.</span> <span class="nav-text">文档加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#避免在多个文档间保持同一个引用"><span class="nav-number">3.1.</span> <span class="nav-text">避免在多个文档间保持同一个引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于浏览器的快速历史导航功能"><span class="nav-number">3.2.</span> <span class="nav-text">关于浏览器的快速历史导航功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用XMLHttpRequest"><span class="nav-number">3.3.</span> <span class="nav-text">使用XMLHttpRequest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态创建script元素"><span class="nav-number">3.4.</span> <span class="nav-text">动态创建script元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location-replace-控制历史记录"><span class="nav-number">3.5.</span> <span class="nav-text">location.replace()控制历史记录</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">随云の遐想</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

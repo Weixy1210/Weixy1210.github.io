@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好久没然这些寻根究底的东西了，闲下来搞一波 —— 数据类型以及类型转换~">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/JavaScript数据类型/index.html">
+<meta property="og:site_name" content="世外桃源">
+<meta property="og:description" content="好久没然这些寻根究底的东西了，闲下来搞一波 —— 数据类型以及类型转换~">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-03T00:43:21.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据类型">
+<meta name="twitter:description" content="好久没然这些寻根究底的东西了，闲下来搞一波 —— 数据类型以及类型转换~">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/04/JavaScript数据类型/">
+
+
+
+
+
+  <title>JavaScript数据类型 | 世外桃源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">世外桃源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/JavaScript数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="随云の遐想">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世外桃源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T15:13:08+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/字典式整理/" itemprop="url" rel="index">
+                    <span itemprop="name">字典式整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  好久没然这些寻根究底的东西了，闲下来搞一波 —— 数据类型以及类型转换~
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="六大数据类型"><a href="#六大数据类型" class="headerlink" title="六大数据类型"></a>六大数据类型</h2><ol>
+<li>值类型（原始类型） —— 栈内存存储<br>number、string、boolean、null、undefined、Symbol(ES6)</li>
+<li>引用类型（对象类型） —— 栈内存存储指向堆内存存储位置的指针，堆内存存储内容<br>object(Function、Array、Date、Regexp…)</li>
+</ol>
+<h2 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h2><h3 id="加减运算符"><a href="#加减运算符" class="headerlink" title="加减运算符"></a>加减运算符</h3><p><code>5 + &#39;5&#39;</code> → String<br><code>5 - &#39;5&#39;</code> → Number<br>* 加减运算符作为单目运算符时的情况：一律转换为数字，减号识别为负号<br><code>+[]</code> → 0<br><code>+[1]</code> → 1<br><code>+[0, 1]</code> → NaN<br><code>+{}</code> → NaN<br><code>-[]</code> → -0<br><code>-[1]</code> → -1<br><code>-[0, 1]</code> → NaN<br><code>-{}</code> → NaN</p>
+<h3 id="点运算符"><a href="#点运算符" class="headerlink" title="点运算符"></a>点运算符</h3><p>通过点运算符访问值类型的属性或调用其方法时，先将值类型转换为对应的临时对象类型：（这类对象可称为包装对象）<br>number → new Number()<br>boolean → new Boolen()<br>string → new String()<br>再访问ga该临时对象的属性或调用其方法，使用完毕后，则销毁该临时对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var str1 = &quot;test&quot;                           var str2 = new String(&quot;test&quot;)</span><br><span class="line">str1.length = 10                            str2.length = 10</span><br><span class="line">str1.testStrLen = 10                        str2.testStrLen = 10</span><br><span class="line">var res1 = str1.length                      var res2 = str2.length</span><br><span class="line">console.log(res1)     // 输出4              console.log(res2)     // 输出4</span><br><span class="line">res1 = str1.testStrLen                      res2 = str2.testStrLen</span><br><span class="line">console.log(res1)     // 输出undefined      console.log(res2)     // 输出10</span><br></pre></td></tr></table></figure>
+
+<p>* 原型链读取时，以自身属性优先。<br><code>str1 == str2</code> → true<br><code>str1 === str2</code> → false</p>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h3><p><code>==</code>/<code>!=</code> 存在隐式类型转换，转换为数字进行比较<br><code>===</code>/<code>!==</code> 不转换，类型不一致则判断false<br><strong>* undefined和null与任何有意义的值比较返回的都是false，但是null与undefined之间互相比较返回的是true：</strong><br><code>undefined == false</code> → false<br><code>null == false</code> → false<br><code>undefined == null</code> → true</p>
+<h3 id="if-条件判断"><a href="#if-条件判断" class="headerlink" title="if() 条件判断"></a>if() 条件判断</h3><p>转换为布尔值用于判断</p>
+<h2 id="显式类型转换"><a href="#显式类型转换" class="headerlink" title="显式类型转换"></a>显式类型转换</h2><h3 id="Number-、String-、Boolean-…"><a href="#Number-、String-、Boolean-…" class="headerlink" title="Number()、String()、Boolean()…"></a>Number()、String()、Boolean()…</h3><p><code>Number(&quot;123.1&quot;)</code> → 123.1<br><code>Number(&quot;123.1a&quot;)</code> → NaN</p>
+<h3 id="parseInt-string-radix-、parseFloat-string"><a href="#parseInt-string-radix-、parseFloat-string" class="headerlink" title="parseInt(string, radix)、parseFloat(string)"></a>parseInt(string, radix)、parseFloat(string)</h3><ul>
+<li>string<br>– 只有string中的第一个数字会被解读<br>– 开头和结尾的空格会被自动忽略<br>– string的第一个非空格字符若不是数字，则返回NaN</li>
+<li>radix<br>– 解析数字的基数，取值[2, 36]<br>– 若省略，则以10为基数；若string的数字以”0x”或”0X”开头，则以16为基数<br>– 若取值超出[2, 36]的范围，则返回NaN</li>
+</ul>
+<p><code>parseInt(&quot;17&quot;,8)</code> → 15 —— 1*8+7<br><code>parseInt(&quot;0x17&quot;)</code> → 23 —— 1*16+7<br><code>parseFloat(&quot; 17.12 &quot;)</code> → 17.12<br><code>parseFloat(&quot;0x17&quot;)</code> → 0<br><code>parseFloat(&quot;34 45 66&quot;)</code> → 34<br><code>parseFloat(&quot;40 years&quot;)</code> → 40<br><code>parseFloat(&quot; He was 40 &quot;)</code> → NaN</p>
+<h3 id="取反-、双重取反"><a href="#取反-、双重取反" class="headerlink" title="取反(!)、双重取反(!!)"></a>取反(!)、双重取反(!!)</h3><p>转换为布尔型</p>
+<h2 id="类型转换运作模式"><a href="#类型转换运作模式" class="headerlink" title="类型转换运作模式"></a>类型转换运作模式</h2><h3 id="转换总表"><a href="#转换总表" class="headerlink" title="转换总表"></a>转换总表</h3><table>
+<thead>
+<tr>
+<th>原始值</th>
+<th>转换为字符串</th>
+<th>转换为数字</th>
+<th>转换为布尔型</th>
+<th>转换为对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>undefined</td>
+<td>“undefined”</td>
+<td>NaN</td>
+<td>false</td>
+<td>Throw Error</td>
+</tr>
+<tr>
+<td>null</td>
+<td>“null”</td>
+<td>0</td>
+<td>false</td>
+<td>Throw Error</td>
+</tr>
+<tr>
+<td>true</td>
+<td>“true”</td>
+<td>1</td>
+<td>-</td>
+<td>New Boolean(true)</td>
+</tr>
+<tr>
+<td>false</td>
+<td>“false”</td>
+<td>0</td>
+<td>-</td>
+<td>New Boolean(false)</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>-</td>
+<td>0</td>
+<td>false</td>
+<td>New String(“”)</td>
+</tr>
+<tr>
+<td>“0”</td>
+<td>-</td>
+<td>0</td>
+<td>true</td>
+<td>New String(“0”)</td>
+</tr>
+<tr>
+<td>“1.2”</td>
+<td>-</td>
+<td>1.2</td>
+<td>true</td>
+<td>New String(“1.2”)</td>
+</tr>
+<tr>
+<td>“zero”</td>
+<td>-</td>
+<td>NaN</td>
+<td>true</td>
+<td>New String(“zero”)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>“0”</td>
+<td>-</td>
+<td>false</td>
+<td>New Number(0)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>“1”</td>
+<td>-</td>
+<td>true</td>
+<td>New Number(1)</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>“NaN”</td>
+<td>-</td>
+<td>false</td>
+<td>New Number(NaN)</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>“[object Object]”</td>
+<td>比较复杂</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>“”</td>
+<td>0</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[1]</td>
+<td>“1”</td>
+<td>1</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>[0, 1]</td>
+<td>“0,1”</td>
+<td>NaN</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>function(){}</td>
+<td>“function (){}”</td>
+<td>NaN</td>
+<td>true</td>
+<td>-</td>
+</tr>
+<tr>
+<td>* 注意：new Boolean(false)是一个对象，转换为布尔型时为true</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="类型转换规律"><a href="#类型转换规律" class="headerlink" title="类型转换规律"></a>类型转换规律</h3><h4 id="1-toString-转换为字符串"><a href="#1-toString-转换为字符串" class="headerlink" title="1. toString()转换为字符串"></a>1. toString()转换为字符串</h4><p><code>[1,2,3].toString()</code> → “1,2,3”<br><code>(function(x){f(x);}).toString()</code> → “function(x){f(x);}”<br><code>new Date(2017,1,14).toString()</code> → “Tue Feb 14 2017 00:00:00 GMT+0800 (中国标准时间)”<br><code>/\d{9}/.toString()</code> → “/\d{9}/“<br><code>({x:0,y:1}).toString()</code> → “[object object]”</p>
+<h4 id="2-valueOf-方法规律"><a href="#2-valueOf-方法规律" class="headerlink" title="2. valueOf()方法规律"></a>2. valueOf()方法规律</h4><p>若存在原始值，则转换为它的原始值；<br>非日期类型的对象多为复合值，无法真正表示成一个原始值，则简单地返回对象本身（如：数组、函数、正则表达式）；<br>日期类型的对象返回从1970年1月1日以来总的毫秒数。<br><code>new Number(1).valueOf()</code> → 1 —— [Number]<br><code>new Number(&#39;1&#39;).valueOf()</code> → 1 —— [Number]<br><code>new Number(&#39;a&#39;).valueOf()</code> → NaN —— [Number]<br><code>new Boolean(false).valueOf()</code> → false —— [Boolean]<br><code>new Boolean(&#39;a&#39;).valueOf()</code> → true —— [Boolean]<br><code>[1,2,3].valueOf()</code> → [1, 2, 3]  —— [Array]<br><code>(function(x){f(x);}).valueOf()</code> → ƒ(x){f(x);} —— [Function]<br><code>new Date(2017,1,14).valueOf()</code> → 1487001600000  —— [Number]<br><code>/\d{9}/.valueOf()</code> → /\d{9}/ —— [RegExp]<br><code>({x:0,y:1}).valueOf()</code> → {x: 0, y: 1} —— [Object]</p>
+<h4 id="3-转换字符串或数字的步骤"><a href="#3-转换字符串或数字的步骤" class="headerlink" title="3. 转换字符串或数字的步骤"></a>3. 转换字符串或数字的步骤</h4><h5 id="转换为字符串的具体步骤"><a href="#转换为字符串的具体步骤" class="headerlink" title="转换为字符串的具体步骤:"></a>转换为字符串的具体步骤:</h5><p>Step1 尝试调用toString()方法，如果方法存在且返回一个原始值（值类型），则将这个值转换为字符串，作为最终结果。<br>Step2 尝试调用valueOf()方法，如果方法存在且返回一个原始值（值类型），则将这个值转换为字符串，作为最终结果。<br>Step3 如果toString()和valueOf()均调用失败，则抛出一个类型错误。</p>
+<h5 id="转换为数字的具体步骤"><a href="#转换为数字的具体步骤" class="headerlink" title="转换为数字的具体步骤:"></a>转换为数字的具体步骤:</h5><p>Step1 尝试调用valueOf()方法，如果方法存在且返回一个原始值（值类型），则将这个值转换为数字，作为最终结果。<br>Step2 尝试调用toString()方法，如果方法存在且返回一个原始值（值类型），则将这个值转换为数字，作为最终结果。<br>Step3 如果toString()和valueOf()均调用失败，则抛出一个类型错误。</p>
+<ul>
+<li>空数组转数字的过程：<br><code>[]</code>先调用<code>valueOf()</code>，获得<code>[]</code>，不是原始值；<br>则再调用<code>toString()</code>，获得<code>&quot;&quot;</code>，是原始值，转换为数字<code>0</code>输出。</li>
+<li><code>[] == false</code> → true —— <code>[]</code>与false均转化为数字<code>0</code>进行比较<br><code>![] == false</code> → true —— <code>[]</code>先转换为布尔型<code>true</code>取反，再转换为数字<code>0</code>与<code>false</code>转换的数字<code>0</code>进行比较</li>
+</ul>
+<h5 id="关系、算术运算符至少有一侧为对象类型时"><a href="#关系、算术运算符至少有一侧为对象类型时" class="headerlink" title="关系、算术运算符至少有一侧为对象类型时"></a>关系、算术运算符至少有一侧为对象类型时</h5><p>1) 对于非日期类型的对象，先调用valueOf()，再调用toString()，直到获得原始值，再根据运算需要转换类型；<br>2) 对于日期类型的对象，如果是+、==、!=运算符，则调用toString()获得原始值，其他运算符（如减号、大于号、小于号），则调用valueOf()获得原始值，再参与运算:<br><code>new Date(2017, 1, 1) == 1485878400000</code> → false<br><code>new Date(2017, 1, 1) == &#39;Wed Feb 01 2017 00:00:00 GMT+0800 (中国标准时间)&#39;</code> → true<br><code>new Date(2017, 1, 1) + 1</code> → “Wed Feb 01 2017 00:00:00 GMT+0800 (中国标准时间)1”<br><code>new Date(2017, 1, 1) - 1</code> → 1485878399999<br><code>new Date(2018, 0, 1) &lt; new Date(2017, 2, 1)</code> → false<br><code>&quot;Mon Jan 01 2018 00:00:00 GMT+0800 (中国标准时间)&quot; &lt; &quot;Wed Mar 01 2017 00:00:00 GMT+0800 (中国标准时间)&quot;</code> → true</p>
+<h2 id="类型判别方法"><a href="#类型判别方法" class="headerlink" title="类型判别方法"></a>类型判别方法</h2><h3 id="1-typeof"><a href="#1-typeof" class="headerlink" title="1. typeof"></a>1. typeof</h3><p>一元运算符，置于一个运算数之前：<code>typeof 检测对象</code>，检测对象也可以用<code>()</code>包裹；<br>运算结果是一个字符串，表示运算数的类型：</p>
+<table>
+<thead>
+<tr>
+<th>检测对象</th>
+<th>检测结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>undefined</td>
+<td>“undefined”</td>
+</tr>
+<tr>
+<td>null</td>
+<td>“object”</td>
+</tr>
+<tr>
+<td>true</td>
+<td>“boolean”</td>
+</tr>
+<tr>
+<td>123</td>
+<td>“number”</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>“number”</td>
+</tr>
+<tr>
+<td>“123”</td>
+<td>“string”</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>“object”</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>“object”</td>
+</tr>
+<tr>
+<td>function(x){f(x);}</td>
+<td>“function”</td>
+</tr>
+<tr>
+<td>Symbol类型变量(ES6新类型)</td>
+<td>“symbol”</td>
+</tr>
+<tr>
+<td><strong>总结：typeof()可以判别原始类型（除null），不能判断对象类型（除function）</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>应用场景：</td>
+<td></td>
+</tr>
+<tr>
+<td>- 判断一个变量是否存在</td>
+<td></td>
+</tr>
+<tr>
+<td><code>if(typeof a != &quot;undefined&quot;)</code>（不使用<code>if(a)</code>可防止a变量未声明而报错）</td>
+<td></td>
+</tr>
+<tr>
+<td>- 判断document.getElementsByTagName是否获取到对象</td>
+<td></td>
+</tr>
+<tr>
+<td><code>if(typeof(list.length) != &quot;undefined&quot; )</code>或<code>if(!isNaN(list.length))</code></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-instanceof"><a href="#2-instanceof" class="headerlink" title="2. instanceof"></a>2. instanceof</h3><p>二元运算符，<code>object（要检测的对象） instanceof constructor（某个构造函数）</code>，判断检测对象的原型链中是否存在构造函数的prototype属性，即判断某个对象是不是另一个对象的实例。<br><strong>仅能判别对象类型，不能判别原始类型：</strong></p>
+<ul>
+<li>内置对象类型<br><code>[] instanceof Object</code> → true<br><code>[] instanceof Array</code> → true<br><code>[] instanceof Date</code> → false</li>
+<li>自定义对象类型及其继承关系<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;</span><br><span class="line">function Student()&#123;&#125;</span><br><span class="line">var p = new Person()</span><br><span class="line">Student.prototype = p  // Student原型继承p，Student.prototype._proto_ = p.prototype</span><br><span class="line">var s = new Student()</span><br><span class="line">console.log(s instanceof Student)    // 输出true</span><br><span class="line">console.log(s instanceof Person)     // 输出true</span><br><span class="line">Student.prototype = &#123;&#125;</span><br><span class="line">console.log(s instanceof Student)    // 输出false</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>instanceof的模拟函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function _instanceof(A, B) &#123;</span><br><span class="line">    var O = B.prototype    // 取B的显示原型</span><br><span class="line">    A = A._proto_          // 取A的隐式原型</span><br><span class="line">    while (true) &#123;</span><br><span class="line">        if (A === null)    // Object.prototype._proto_ === null</span><br><span class="line">            return false</span><br><span class="line">        if (O === A)       // 当O严格等于A时，返回true</span><br><span class="line">            return true</span><br><span class="line">        A = A._proto_</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此：<br>1) <code>Object instanceof Object</code> → true<br>    第一个Object的原型链:<br>    <code>Object → (Object._proto_) → Function.prototype → (Function.prototype._proto_) → Object.prototype</code><br>    第二个Object的原型：<code>Object → Object.prototype</code></p>
+<p>2) <code>Function instanceof Function</code> → true<br>    第一个Function的原型链：<br>    <code>Function =&gt; (Function._proto_) =&gt; Function.prototype</code><br>    第二个Function的原型：<code>Function =&gt; Function.prototype</code></p>
+<p>3) <code>console.log(Function instanceof Object)</code> → true<br>    Function的原型链：<br>    <code>Function =&gt; (Function._proto_) =&gt; Function.prototype =&gt; (Function.prototype._proto_) =&gt; Object.prototype</code><br>    Object的原型：<code>Object =&gt; Object.prototypefunction Person() {}</code></p>
+<p>4) <code>console.log(Person instanceof Function)</code> → true<br>    Person的原型链：<code>Person =&gt; (Person._proto_) =&gt; Function.prototype</code><br>     Function的原型：<code>Function =&gt; Function.prototype</code></p>
+<p>5) <code>console.log(String instanceof String)</code> → false<br>    第一个String的原型链：<br>    <code>String =&gt; (String._proto_) =&gt; Function.prototype =&gt; (Function.prototype._proto_) =&gt; Object.prototype</code><br>    第二个String的原型：<code>String =&gt; String.prototype</code></p>
+<p>6) <code>console.log(Boolean instanceof Boolean)</code> → false<br>    同理String</p>
+<p>7) <code>console.log(Person instanceof Person)</code> → false<br>    第一个Person的原型链：<br>    <code>Person =&gt; (Person._proto_) =&gt; Function.prototype =&gt; (Function.prototype._proto_) =&gt; Object.prototype</code><br>    第二个Person的原型：<code>Person =&gt; Person.prototype</code></p>
+<h3 id="3-Object-prototype-toString-call-检测对象"><a href="#3-Object-prototype-toString-call-检测对象" class="headerlink" title="3. Object.prototype.toString.call(检测对象)"></a>3. Object.prototype.toString.call(检测对象)</h3><table>
+<thead>
+<tr>
+<th>检测对象</th>
+<th>检测结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>undefined</td>
+<td>“[object Undefined]”</td>
+</tr>
+<tr>
+<td>null</td>
+<td>“[object Null]”</td>
+</tr>
+<tr>
+<td>true</td>
+<td>“[object Boolean]”</td>
+</tr>
+<tr>
+<td>123</td>
+<td>“[object Number]”</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>“[object Number]”</td>
+</tr>
+<tr>
+<td>“123”</td>
+<td>“[object String]”</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>“[object Array]”</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>“[object Object]”</td>
+</tr>
+<tr>
+<td>function(x){f(x);}</td>
+<td>“[object Function]”</td>
+</tr>
+<tr>
+<td>* 对于没有重写toString方法的自定义对象类型，返回均为<code>[object Object]</code>，其构造函数返回<code>[object Function]</code>，如：</td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">var p = new Person()</span><br><span class="line">Object.prototype.toString.call(Person)    // 输出&quot;[object Function]&quot;</span><br><span class="line">Object.prototype.toString.call(p)         // 输出&quot;[object Object]&quot;</span><br></pre></td></tr></table></figure></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="4-检测对象-constructor"><a href="#4-检测对象-constructor" class="headerlink" title="4. (检测对象).constructor"></a>4. (检测对象).constructor</h3><p>具体操作：<br><code>(检测对象).constructor.toString().match(/function\s*([^(]*)/)[1]</code>（匹配正则没懂）<br><code>(检测对象).constructor.toString().split(/ |\(/)[1]</code><br><strong>基本可以判别所有类型：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;&#125;</span><br><span class="line">var p = new Person()</span><br><span class="line">(Person).constructor.toString().split(/ |\(/)[1]    // 输出&quot;Function&quot;</span><br><span class="line">(p).constructor.toString().split(/ |\(/)[1]         // 输出&quot;Person&quot;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/25/文章里测试区域的添加/" rel="next" title="文章里测试区域的添加">
+                <i class="fa fa-chevron-left"></i> 文章里测试区域的添加
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/02/call、apply、bind的用法/" rel="prev" title="call()、apply()、bind()的用法">
+                call()、apply()、bind()的用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">随云の遐想</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#六大数据类型"><span class="nav-number">1.</span> <span class="nav-text">六大数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式类型转换"><span class="nav-number">2.</span> <span class="nav-text">隐式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加减运算符"><span class="nav-number">2.1.</span> <span class="nav-text">加减运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#点运算符"><span class="nav-number">2.2.</span> <span class="nav-text">点运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算符"><span class="nav-number">2.3.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-条件判断"><span class="nav-number">2.4.</span> <span class="nav-text">if() 条件判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式类型转换"><span class="nav-number">3.</span> <span class="nav-text">显式类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number-、String-、Boolean-…"><span class="nav-number">3.1.</span> <span class="nav-text">Number()、String()、Boolean()…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#parseInt-string-radix-、parseFloat-string"><span class="nav-number">3.2.</span> <span class="nav-text">parseInt(string, radix)、parseFloat(string)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取反-、双重取反"><span class="nav-number">3.3.</span> <span class="nav-text">取反(!)、双重取反(!!)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换运作模式"><span class="nav-number">4.</span> <span class="nav-text">类型转换运作模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#转换总表"><span class="nav-number">4.1.</span> <span class="nav-text">转换总表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换规律"><span class="nav-number">4.2.</span> <span class="nav-text">类型转换规律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-toString-转换为字符串"><span class="nav-number">4.2.1.</span> <span class="nav-text">1. toString()转换为字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-valueOf-方法规律"><span class="nav-number">4.2.2.</span> <span class="nav-text">2. valueOf()方法规律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-转换字符串或数字的步骤"><span class="nav-number">4.2.3.</span> <span class="nav-text">3. 转换字符串或数字的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换为字符串的具体步骤"><span class="nav-number">4.2.3.1.</span> <span class="nav-text">转换为字符串的具体步骤:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#转换为数字的具体步骤"><span class="nav-number">4.2.3.2.</span> <span class="nav-text">转换为数字的具体步骤:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关系、算术运算符至少有一侧为对象类型时"><span class="nav-number">4.2.3.3.</span> <span class="nav-text">关系、算术运算符至少有一侧为对象类型时</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型判别方法"><span class="nav-number">5.</span> <span class="nav-text">类型判别方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-typeof"><span class="nav-number">5.1.</span> <span class="nav-text">1. typeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-instanceof"><span class="nav-number">5.2.</span> <span class="nav-text">2. instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Object-prototype-toString-call-检测对象"><span class="nav-number">5.3.</span> <span class="nav-text">3. Object.prototype.toString.call(检测对象)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-检测对象-constructor"><span class="nav-number">5.4.</span> <span class="nav-text">4. (检测对象).constructor</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">随云の遐想</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
