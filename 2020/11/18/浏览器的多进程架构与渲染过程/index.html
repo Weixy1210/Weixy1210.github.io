@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="react,">
+  <meta name="keywords" content="基础知识,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
-<meta name="keywords" content="react">
+<meta name="description" content="文章笔记: 前端都该懂的浏览器工作原理，你懂了吗？">
+<meta name="keywords" content="基础知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react dangerouslySetInnerHTML">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/index.html">
+<meta property="og:title" content="浏览器的多进程架构与渲染过程">
+<meta property="og:url" content="http://yoursite.com/2020/11/18/浏览器的多进程架构与渲染过程/index.html">
 <meta property="og:site_name" content="世外桃源">
-<meta property="og:description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
+<meta property="og:description" content="文章笔记: 前端都该懂的浏览器工作原理，你懂了吗？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-19T14:50:30.082Z">
+<meta property="og:updated_time" content="2020-11-19T14:45:06.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react dangerouslySetInnerHTML">
-<meta name="twitter:description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
+<meta name="twitter:title" content="浏览器的多进程架构与渲染过程">
+<meta name="twitter:description" content="文章笔记: 前端都该懂的浏览器工作原理，你懂了吗？">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/">
+  <link rel="canonical" href="http://yoursite.com/2020/11/18/浏览器的多进程架构与渲染过程/">
 
 
 
 
 
-  <title>react dangerouslySetInnerHTML | 世外桃源</title>
+  <title>浏览器的多进程架构与渲染过程 | 世外桃源</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/18/浏览器的多进程架构与渲染过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="随云の遐想">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react dangerouslySetInnerHTML</h1>
+          <h1 class="post-title" itemprop="name headline">浏览器的多进程架构与渲染过程</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T22:35:00+08:00">
-                2019-08-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-18T15:13:22+08:00">
+                2020-11-18
               </time>
             
 
@@ -285,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/整理积累/" itemprop="url" rel="index">
-                    <span itemprop="name">整理积累</span>
+                  <a href="/categories/阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读笔记</span>
                   </a>
                 </span>
 
@@ -322,18 +322,63 @@
       
 
       
-        <h1 id="JSX-渲染方式"><a href="#JSX-渲染方式" class="headerlink" title="JSX 渲染方式"></a>JSX 渲染方式</h1><p>react 一般的渲染语法是 JSX，具体介绍参见 <a href="https://react.docschina.org/docs/introducing-jsx.html" target="_blank" rel="noopener">JSX 简介</a></p>
-<p>DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击</p>
-<p>但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML 实现渲染</p>
-<h1 id="dangerouslySetInnerHTML"><a href="#dangerouslySetInnerHTML" class="headerlink" title="dangerouslySetInnerHTML"></a>dangerouslySetInnerHTML</h1><p>dangerouslySetInnerHTML 是 react 提供的一种元素属性，用法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">dangerouslySetInnerHTML</span> = <span class="string">&#123;&#123;</span> <span class="attr">__html:</span> <span class="attr">param</span> &#125;&#125; &gt;</span><span class="tag">&lt;<span class="name">div</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
+        <p>文章笔记: <a href="https://segmentfault.com/a/1190000022633988" target="_blank" rel="noopener">前端都该懂的浏览器工作原理，你懂了吗？</a></p>
 <a id="more"></a>
 
-<p>说明：</p>
-<p>第一个 <code>{}</code> 代表 jsx 语法开始，第二个 <code>{}</code> 是 dangerouslySetInnerHTML 接收的一个对象</p>
-<p>DOM 元素会直接渲染 param 的值，而不会进行转义，因此请对 param 的可能取值充分检查，充分净化，充分掌握！</p>
-<p>尽量少用 dangerouslySetInnerHTML！</p>
+<h1 id="进程-process-与-线程-thread"><a href="#进程-process-与-线程-thread" class="headerlink" title="进程 (process) 与 线程 (thread)"></a>进程 (process) 与 线程 (thread)</h1><ul>
+<li>进程: 程序的一次执行过程, 是一个动态概念, 是程序在执行过程中分配和管理资源的基本单位.</li>
+<li>线程: CPU 调度和分派的基本单位, 它可与同属一个进程的其他的线程共享进程所拥有的全部资源.</li>
+</ul>
+<p>线程是跑在进程里面的, 一个进程里面可能有一个或者多个线程, 而一个线程, 只能隶属于一个进程.<br>进程相互独立, 通信依靠 IPC 机制 (Inter Process Communication) 来进行.</p>
+<h1 id="浏览器的多进程架构"><a href="#浏览器的多进程架构" class="headerlink" title="浏览器的多进程架构"></a>浏览器的多进程架构</h1><p>以 Chrome 为例, 有 4 个主要进程:</p>
+<ul>
+<li><p>浏览器进程 (Browser Process)<br>  负责浏览器的 Tab 的前进, 后退, 地址栏, 书签栏的工作和处理浏览器的一些不可见的底层操作, 比如网络请求和文件访问.<br>  主要线程:</p>
+<ul>
+<li>UI thread: 控制浏览器上的按钮及输入框</li>
+<li>Network thread: 处理网络请求, 从网上获取数据</li>
+<li>Storage thread: 控制文件等的访问</li>
+</ul>
+</li>
+<li><p>渲染进程 (Renderer Process)<br>  负责一个 Tab 内的显示相关的工作, 也称渲染引擎.<br>  默认进程模式: Process-per-site-instance, 每主动打开一个 tab， 开启一个新进程; 页面内通过 js 或者点击链接等形式打开的 tab, 使用同一个进程.<br>  主要线程:</p>
+<ul>
+<li>一个主线程 (main thread)</li>
+<li>多个工作线程 (work thread)</li>
+<li>一个合成器线程 (compositor thread)</li>
+<li>多个光栅化线程 (raster thread)</li>
+</ul>
+</li>
+<li><p>插件进程 (Plugin Process)<br>  负责控制网页使用到的插件.</p>
+</li>
+<li><p>GPU进程 (GPU Process)<br>  负责处理整个应用程序的 GPU 任务.</p>
+</li>
+</ul>
+<h1 id="页面访问过程"><a href="#页面访问过程" class="headerlink" title="页面访问过程"></a>页面访问过程</h1><ul>
+<li><p>Step1: UI thread 处理输入的地址 [Browser Process]</p>
+</li>
+<li><p>Step2: UI thread 将处理结果移交 Network thread 发起请求 [Browser Process]<br>  如果遇到返回 301 重定向响应, 则通知 UI thread 重新处理重定向地址.</p>
+</li>
+<li><p>Step3: Network thread 解读返回 [Browser Process]<br>  根据 Content-Type 确定类型, 如是 HTML 文件则最终交给 Renderer Process 处理.<br>  此外, Network thread 还进行 CORB 等安全检查.</p>
+</li>
+<li><p>Step4: Network thread 通知 UI thread 结果, UI thread 去沟通 Renderer Process. [Browser Process]</p>
+</li>
+<li><p>Step5: Renderer Process 从 Browser Process 接收数据进行渲染处理 [Renderer Process]<br>  Browser Process 向 Renderer Process 发送 IPC 进行确认, 然后发送数据; Renderer Process 收到数据后发送 IPC 告知 Browser Process 渲染开始.<br>  渲染步骤:</p>
+<ul>
+<li>Step1: 构建 DOM [main thread]<br>  构建过程中如果遇到图片, CSS, JavaScript 脚本等资源, 会通知 Browser Process 去请求获取, 并停止 HTML 解析等待资源的加载与执行 (js 资源产生阻塞).<br>  预加载扫描: 为提高效率, 对 img, link 等标签资源进行预加载,<br>  异步加载: 对于含有 async 或 defer 等属性的 script 标签, 会进行异步加载, 不阻塞渲染.<br>  样式计算：对于 style 标签或 link css 资源, 加载 css 代码, 根据 CSS 代码确定每个 DOM 节点的计算样式 (computed style).</li>
+<li>Step2: 构建布局树 [main thread]<br>  结合 DOM 树与计算样式, 找到所有元素的几何关系 (每个元素的页面坐标信息及盒子模型大小), 构成布局树 (Render Tree, 也可称渲染树).<br>  DOM 树中隐藏元素 (display: none) 存在, 伪元素不存在; 布局树中隐藏元素 (display: none) 不存在, 伪元素存在.</li>
+<li>Step3: 生产绘画记录 [main thread]<br>  遍历布局树, 获得每个元素的绘制先后顺序.</li>
+<li>Step4: 合成一次显示结果 [compositor thread]<br>  光栅化: 把上述信息转化为显示器中的像素.<br>  Chrome 实行分层合成策略:<br>  main thread 遍历渲染树来创建一棵层次树 (Layer Tree), 由 raster thread 分层进行光栅化处理 (对于大的层, 再切分成小图块), 处理结果存在GPU Process 的内存中. compositor thread 构建合成, 然后通过 IPC 向 Browser Process 提交渲染结果.</li>
+</ul>
+</li>
+<li><p>Step6: Renderer Process 完成渲染 [Renderer Process]<br>  当页面渲染完成后(页面及内部的 iframe 都触发了 onload 事件), 向 Browser Process 发送 IPC 消息, 告知渲染完成.</p>
+</li>
+</ul>
+<h1 id="浏览器的事件处理"><a href="#浏览器的事件处理" class="headerlink" title="浏览器的事件处理"></a>浏览器的事件处理</h1><ul>
+<li><p>Step1: Browser Process 获得事件发生的类型和发生的位置, 通知 Renderer Process</p>
+</li>
+<li><p>Step2: compositor thread 接收信息, 通知 main thread 进行命中测试 (hit test) 查找事件的目标对象. 如果是非快速滚动区域 (non-fast scrollable region), 则把事件信息发送给 main thread, 等待 main thread 进行事件处理; 如果不是, 则直接合成新的帧.<br>  命中测试: 遍历绘画记录, 找到包含事件发生坐标的元素<br>  非快速滚动区域: js 中绑定了事件监听的区域. 全局事件绑定导致整个区域都变成非快速滚动区域, 流畅的合成器独立处理合成帧的模式就失效了 (<code>passive: true</code> 可解决)<br>  事件优化: 浏览器的渲染频率是每秒 60 帧, 对于如 wheel, mousewheel, mousemove, pointermove, touchmove 等高频触发事件, 浏览器会合并这些连续的事件, 延迟到下一帧渲染时执行 (requestAnimationFrame 之前); 其他非连续性事件则直接派发给 main thread 去执行.</p>
+</li>
+</ul>
+<p>*\ 更详细的信息:<br><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part1" target="_blank" rel="noopener">Inside look at modern web browser (part 1)</a><br><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part2" target="_blank" rel="noopener">Inside look at modern web browser (part 2)</a><br><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part3" target="_blank" rel="noopener">Inside look at modern web browser (part 3)</a><br><a href="https://developers.google.com/web/updates/2018/09/inside-browser-part4" target="_blank" rel="noopener">Inside look at modern web browser (part 4)</a></p>
 
       
     </div>
@@ -351,7 +396,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react/" rel="tag"># react</a>
+            <a href="/tags/基础知识/" rel="tag"># 基础知识</a>
           
         </div>
       
@@ -364,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/29/switch-case 穿透/" rel="next" title="switch-case 穿透">
-                <i class="fa fa-chevron-left"></i> switch-case 穿透
+              <a href="/2020/02/02/JavaScript 忍者秘籍/" rel="next" title="JavaScript 忍者秘籍">
+                <i class="fa fa-chevron-left"></i> JavaScript 忍者秘籍
               </a>
             
           </div>
@@ -374,8 +419,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/11/Array.filter & Array.find/" rel="prev" title="Array.filter & Array.find">
-                Array.filter & Array.find <i class="fa fa-chevron-right"></i>
+              <a href="/2020/11/19/IntersectionObserver API/" rel="prev" title="IntersectionObserver API">
+                IntersectionObserver API <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,7 +553,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-渲染方式"><span class="nav-number">1.</span> <span class="nav-text">JSX 渲染方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dangerouslySetInnerHTML"><span class="nav-number">2.</span> <span class="nav-text">dangerouslySetInnerHTML</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#进程-process-与-线程-thread"><span class="nav-number">1.</span> <span class="nav-text">进程 (process) 与 线程 (thread)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器的多进程架构"><span class="nav-number">2.</span> <span class="nav-text">浏览器的多进程架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#页面访问过程"><span class="nav-number">3.</span> <span class="nav-text">页面访问过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器的事件处理"><span class="nav-number">4.</span> <span class="nav-text">浏览器的事件处理</span></a></li></ol></div>
             
 
           </div>

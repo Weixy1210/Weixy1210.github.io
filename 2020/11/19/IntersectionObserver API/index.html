@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="react,">
+  <meta name="keywords" content="JavaScript,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
-<meta name="keywords" content="react">
+<meta name="description" content="文章笔记: IntersectionObserver API 使用教程">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react dangerouslySetInnerHTML">
-<meta property="og:url" content="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/index.html">
+<meta property="og:title" content="IntersectionObserver API">
+<meta property="og:url" content="http://yoursite.com/2020/11/19/IntersectionObserver API/index.html">
 <meta property="og:site_name" content="世外桃源">
-<meta property="og:description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
+<meta property="og:description" content="文章笔记: IntersectionObserver API 使用教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-19T14:50:30.082Z">
+<meta property="og:updated_time" content="2020-11-19T14:48:06.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react dangerouslySetInnerHTML">
-<meta name="twitter:description" content="JSX 渲染方式react 一般的渲染语法是 JSX，具体介绍参见 JSX 简介 DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击 但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML">
+<meta name="twitter:title" content="IntersectionObserver API">
+<meta name="twitter:description" content="文章笔记: IntersectionObserver API 使用教程">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/">
+  <link rel="canonical" href="http://yoursite.com/2020/11/19/IntersectionObserver API/">
 
 
 
 
 
-  <title>react dangerouslySetInnerHTML | 世外桃源</title>
+  <title>IntersectionObserver API | 世外桃源</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/react dangerouslySetInnerHTML/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/IntersectionObserver API/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="随云の遐想">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react dangerouslySetInnerHTML</h1>
+          <h1 class="post-title" itemprop="name headline">IntersectionObserver API</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-03T22:35:00+08:00">
-                2019-08-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-19T15:13:22+08:00">
+                2020-11-19
               </time>
             
 
@@ -285,8 +285,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/整理积累/" itemprop="url" rel="index">
-                    <span itemprop="name">整理积累</span>
+                  <a href="/categories/阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读笔记</span>
                   </a>
                 </span>
 
@@ -322,18 +322,31 @@
       
 
       
-        <h1 id="JSX-渲染方式"><a href="#JSX-渲染方式" class="headerlink" title="JSX 渲染方式"></a>JSX 渲染方式</h1><p>react 一般的渲染语法是 JSX，具体介绍参见 <a href="https://react.docschina.org/docs/introducing-jsx.html" target="_blank" rel="noopener">JSX 简介</a></p>
-<p>DOM 内容会被预先统一转义，以字符串的形式被页面渲染，这样可以有效地防止 XSS (cross-site-scripting，跨站脚本) 攻击</p>
-<p>但是，当变量内含有元素标签时，由于被统一转成了字符串，元素标签并不会被解读成 DOM 元素。因此，在某些特定情况，需要使用 dangerouslySetInnerHTML 实现渲染</p>
-<h1 id="dangerouslySetInnerHTML"><a href="#dangerouslySetInnerHTML" class="headerlink" title="dangerouslySetInnerHTML"></a>dangerouslySetInnerHTML</h1><p>dangerouslySetInnerHTML 是 react 提供的一种元素属性，用法如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">dangerouslySetInnerHTML</span> = <span class="string">&#123;&#123;</span> <span class="attr">__html:</span> <span class="attr">param</span> &#125;&#125; &gt;</span><span class="tag">&lt;<span class="name">div</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
+        <p>文章笔记: <a href="https://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html" target="_blank" rel="noopener">IntersectionObserver API 使用教程</a></p>
 <a id="more"></a>
 
-<p>说明：</p>
-<p>第一个 <code>{}</code> 代表 jsx 语法开始，第二个 <code>{}</code> 是 dangerouslySetInnerHTML 接收的一个对象</p>
-<p>DOM 元素会直接渲染 param 的值，而不会进行转义，因此请对 param 的可能取值充分检查，充分净化，充分掌握！</p>
-<p>尽量少用 dangerouslySetInnerHTML！</p>
+<h1 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个观察器</span></span><br><span class="line"><span class="keyword">const</span> io = <span class="keyword">new</span> IntersectionObserver(callback, option);</span><br><span class="line"><span class="comment">// 开始观察 1 号 DOM 节点</span></span><br><span class="line">io.observe(element1);</span><br><span class="line"><span class="comment">// 开始观察 2 号 DOM 节点</span></span><br><span class="line">io.observe(element2);</span><br><span class="line"><span class="comment">// 停止观察 1 号 DOM 节点</span></span><br><span class="line">io.unobserve(element1);</span><br><span class="line"><span class="comment">// 关闭观察器</span></span><br><span class="line">io.disconnect();</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h1><ul>
+<li><p>callback: 观察元素的可见性发送变化时执行的回调函数<br>  一般会触发两次, 一次是目标元素刚刚进入视口 (开始可见), 另一次是完全离开视口 (开始不可见).<br>  callback 的入参是一个数组, 成员是可见性发生变化的元素的信息, 每个成员都是一个 IntersectionObserverEntry 对象.<br>  IntersectionObserverEntry 对象提供目标元素的信息, 主要属性有:</p>
+<ul>
+<li>time: 可见性发生变化的时间, 时间戳形式, 单位毫秒</li>
+<li>target: 被观察的可见性发生变化的目标元素, 是一个 DOM 节点对象</li>
+<li>isIntersecting: 当前目标元素是否可见, 区分可见性的变化是出现还是消失</li>
+<li>rootBounds: 根元素的矩形区域信息, 即其 getBoundingClientRect() 方法的返回值, 如果没有根元素 (即直接相对于视口滚动), 则返回null</li>
+<li>boundingClientRect: 目标元素的矩形区域信息</li>
+<li>intersectionRect: 目标元素与视口 (或根元素) 的交叉区域信息</li>
+<li>intersectionRatio: 目标元素的可见比例, 即 intersectionRect 占 boundingClientRect 的比例, 完全可见时为 1, 完全不可见时小于等于 0</li>
+</ul>
+</li>
+<li><p>option: 配置对象 (可选)<br>  可配置的属性有:</p>
+<ul>
+<li>threshold: 决定什么时候触发回调函数<br>  数组形式, 默认为[0], 即交叉比例 (intersectionRatio) 达到 0 时触发回调函数</li>
+<li>root &amp; rootMargin<br>  root 指定目标元素所在的容器节点 (即根元素), 容器元素必须是目标元素的祖先节点.<br>  rootMargin 定义根元素的 margin, 从而扩展或缩小 rootBounds 这个矩形的大小, 取值与 CSS margin 一致.</li>
+</ul>
+</li>
+</ul>
+<h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h1><p>IntersectionObserver API 是异步的, 不随着目标元素的滚动同步触发, 只有线程空闲下来, 才会执行观察器.<br>兼容性方面较差, IE 以及低版本电脑浏览器不支持, 手机浏览器里有许多的可用性有待测试.</p>
 
       
     </div>
@@ -351,7 +364,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react/" rel="tag"># react</a>
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
         </div>
       
@@ -364,8 +377,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/29/switch-case 穿透/" rel="next" title="switch-case 穿透">
-                <i class="fa fa-chevron-left"></i> switch-case 穿透
+              <a href="/2020/11/18/浏览器的多进程架构与渲染过程/" rel="next" title="浏览器的多进程架构与渲染过程">
+                <i class="fa fa-chevron-left"></i> 浏览器的多进程架构与渲染过程
               </a>
             
           </div>
@@ -373,10 +386,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/11/Array.filter & Array.find/" rel="prev" title="Array.filter & Array.find">
-                Array.filter & Array.find <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,7 +517,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSX-渲染方式"><span class="nav-number">1.</span> <span class="nav-text">JSX 渲染方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dangerouslySetInnerHTML"><span class="nav-number">2.</span> <span class="nav-text">dangerouslySetInnerHTML</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用示例"><span class="nav-number">1.</span> <span class="nav-text">使用示例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数解析"><span class="nav-number">2.</span> <span class="nav-text">参数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">3.</span> <span class="nav-text">注意点</span></a></li></ol></div>
             
 
           </div>
