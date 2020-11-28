@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="世外桃源">
 <meta property="og:description" content="emmm...">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-11-19T14:42:25.674Z">
+<meta property="og:updated_time" content="2020-11-28T07:17:33.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 忍者秘籍">
 <meta name="twitter:description" content="emmm...">
@@ -983,6 +983,48 @@ indexOf: 第一个匹配的索引; lastIndexOf: 最后一个匹配的索引.</co
   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 支持自闭合的标签</span></span><br><span class="line"><span class="keyword">const</span> tags = <span class="regexp">/^(area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)$/i</span>;</span><br><span class="line"><span class="comment">// 将非闭合标签标准化的方法</span></span><br><span class="line"><span class="keyword">const</span> convert = <span class="function"><span class="params">html</span> =&gt;</span> html.replace(<span class="regexp">/(&lt;(\w+)[^&gt;]*)\/&gt;/g</span>, (all, front, tag) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> tags.test(tag) ? all : front + <span class="string">'&gt;&lt;/'</span> + tag + <span class="string">'&gt;'</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">convert(<span class="string">'&lt;div class="test"/&gt;'</span>);  <span class="comment">// &lt;div class="test"&gt;&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>DOM 的一些方法属性<br>  ownerDocument 属性: 一般 DOM 元素的该属性值为 document.<br>  createDocumentFragment() 方法: 创建一个空 div, 该 div 不在最终的 DOM 树中出现, 但是可以执行插入与克隆等 DOM 操作.<br>  cloneNode(boolean) 方法: 克隆 DOM, 参数指示是否深度拷贝, 即是否克隆子元素.</p>
+</li>
+<li><p>HTML 元素属性与 DOM 对象属性<br>  部分原生 HTML 元素属性 (如 id) 与其 DOM 对象属性是关联的, 既可以用 setAttribute 与 getAttribute 进行设置与读取, 也可以用 js 操作对象属性的方式进行设置与读取. <strong>但是需要注意: 两者是关联的关系, 而非用同一个值!</strong><br>  对于自定义的 HTML 元素属性以及部分原生 HTML 元素属性 (如 class), 只能用 setAttribute 与 getAttribute 进行设置与读取, js 对象属性的操作方式并不支持.<br>  HTML5 建议用 data- 前缀的方式去自定义 HTML 元素属性, 以和原生属性区分.</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"idTest"</span> <span class="attr">class</span>=<span class="string">"classTest"</span> <span class="attr">data-custom</span>=<span class="string">"customTest"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="built_in">document</span>.getElementById(<span class="string">'idTest'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(test.getAttribute(<span class="string">'id'</span>));           <span class="comment">// idTest</span></span><br><span class="line"><span class="built_in">console</span>.log(test.id);                           <span class="comment">// idTest</span></span><br><span class="line"><span class="built_in">console</span>.log(test.getAttribute(<span class="string">'class'</span>));        <span class="comment">// classTest</span></span><br><span class="line"><span class="built_in">console</span>.log(test.class);                        <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(test.getAttribute(<span class="string">'data-custom'</span>));  <span class="comment">// customTest</span></span><br><span class="line"><span class="built_in">console</span>.log(test[<span class="string">'data-custom'</span>]);               <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(test.dataCustom);                   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HTML 元素样式<br>  行内样式优先级甚至高于 css 样式表中的 !important 优先符.<br>  行内样式可被 getAttribute 或 DOM 对象的 style 属性获取, 而 css 样式表中的样式则不能.<br>  可用以下方式获取元素计算样式 (浏览器样式, css 样式与行内样式等的综合计算结果):</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    div &#123; font-size: 20px; &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"Test"</span> <span class="attr">style</span>=<span class="string">"color: red;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fetchComputedStyle = <span class="function">(<span class="params">element, property</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> computedStyles = getComputedStyle(element);  <span class="comment">// 获取某个元素的计算样式</span></span><br><span class="line">    <span class="keyword">if</span> (!computedStyles) <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">    property = property.replace(<span class="regexp">/([A-Z])/g</span>, <span class="string">'-$1'</span>).toLowerCase();  <span class="comment">// 将驼峰命名转换成标准的 css 样式名</span></span><br><span class="line">    <span class="keyword">return</span> computedStyles.getPropertyValue(property);  <span class="comment">// 入参需为标准的 css 样式名, 否则查询不到</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> test = <span class="built_in">document</span>.getElementById(<span class="string">'Test'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(fetchComputedStyle(test, <span class="string">'color'</span>));      <span class="comment">// rgb(255, 0, 0) -- 浏览器一般会将各形式颜色统一转成 rgb 形式</span></span><br><span class="line"><span class="built_in">console</span>.log(fetchComputedStyle(test, <span class="string">'font-size'</span>));  <span class="comment">// 20px</span></span><br><span class="line"><span class="built_in">console</span>.log(fetchComputedStyle(test, <span class="string">'fontSize'</span>));   <span class="comment">// 20px</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>DOM 对象的 offsetHeight 与 offsetWidth 属性<br>  获取元素的尺寸 (包含元素的 padding).<br>  当元素 display: none 时, 该元素不在渲染树里, 此时的元素不具有大小, 这两个属性的值都为 0.</p>
+</li>
+<li><p>布局抖动 layout thrashing<br>  某些属性方法会强制要求浏览器更新布局, 以保证在最新的布局下获得正确的值. 如果在获取这些属性或者调用方法之间穿插进行 DOM 修改, 则会导致浏览器不断的强制更新布局, 不利于性能优化.<br>  一些强制浏览器更新布局的方法属性 (<a href="http://ricostacruz.com/cheatsheets/layout-thrashing.html" target="_blank" rel="noopener">来源</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Property name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Element</td>
+<td>clientHeight, clientWidth, clientLeft, clientTop;<br>offsetHeight, offsetWidth, offsetLeft, offsetTop, offsetParent;<br>getBoundingClientRect, getClientRects;<br>innerText, outerText;<br>focus;<br>scrollByLines, scrollByPages, scrollIntoView, scrollIntoViewIfNeeded;<br>scrollHeight, scrollWidth, scrollLeft, scrollTop</td>
+</tr>
+<tr>
+<td>MouseEvent</td>
+<td>layerX, layerY, offsetX, offsetY</td>
+</tr>
+<tr>
+<td>Window</td>
+<td>getComputedStyle, scrollBy, scrollTo, scroll, scrollY</td>
+</tr>
+<tr>
+<td>Frame, Document, Image</td>
+<td>height, width</td>
+</tr>
+<tr>
+<td>一些优化布局抖动的工具: <a href="https://github.com/wilsonpage/fastdom" target="_blank" rel="noopener">FastDom</a>, React 虚拟 DOM</td>
+<td></td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 
