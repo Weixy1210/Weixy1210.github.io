@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,正则表达式,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前几天做了一道题，深刻认识到我对“正则”这个东东只处于了解阶段，实际使用还有很大问题，所以，静下心整理学习一下~">
+<meta name="keywords" content="JavaScript,正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 正则表达式">
+<meta property="og:url" content="http://yoursite.com/2017/04/14/JavaScript 正则表达式/index.html">
+<meta property="og:site_name" content="世外桃源">
+<meta property="og:description" content="前几天做了一道题，深刻认识到我对“正则”这个东东只处于了解阶段，实际使用还有很大问题，所以，静下心整理学习一下~">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-10-30T09:20:48.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 正则表达式">
+<meta name="twitter:description" content="前几天做了一道题，深刻认识到我对“正则”这个东东只处于了解阶段，实际使用还有很大问题，所以，静下心整理学习一下~">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/14/JavaScript 正则表达式/">
+
+
+
+
+
+  <title>JavaScript 正则表达式 | 世外桃源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">世外桃源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/14/JavaScript 正则表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="随云の遐想">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世外桃源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 正则表达式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-14T20:51:31+08:00">
+                2017-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/整理积累/" itemprop="url" rel="index">
+                    <span itemprop="name">整理积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  前几天做了一道题，深刻认识到我对“正则”这个东东只处于了解阶段，实际使用还有很大问题，所以，静下心整理学习一下~
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>[参考]</strong><a href="http://php.ncong.com/php_course/php_zend" target="_blank" rel="noopener">恩聪PHP</a>，正则无“国”界。<br>一开始是这么觉得的，总结着总结着发现其实有些还是不一样的，于是结合<a href="http://www.runoob.com/regexp/regexp-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a>修正~</p>
+<p>正则表达式（Regular Expression）是一种文本模式，描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<h2 id="正则表达式的定义"><a href="#正则表达式的定义" class="headerlink" title="正则表达式的定义"></a>正则表达式的定义</h2><p>直接定义变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var 变量名 = /正则表达式/attributes(可选);</span><br></pre></td></tr></table></figure>
+
+<p>创建RegExp对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var 变量名 = new RegExp(/正则表达式/, attributes(可选));</span><br></pre></td></tr></table></figure>
+
+<p>attributes是一个可选的字符串，可取值如下表：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i</td>
+<td>匹配时不区分大小写</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局匹配（一般找到第一个匹配后停止）</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行匹配（默认正则将多行合并为一行进行匹配，所以待匹配字符串中包含换行符；如果加上m，则在匹配时按行分开匹配）</td>
+</tr>
+</tbody></table>
+<h2 id="正则表达式的书写"><a href="#正则表达式的书写" class="headerlink" title="正则表达式的书写"></a>正则表达式的书写</h2><p>正则表达式作为一个匹配的模板，是由原子（普通字符，例如字符a到z）、有特殊功能的字符（称为元字符，例如*、+和?等），以及模式修正符（即上文的attributes）三部分组成的文字模式。</p>
+<h3 id="原子"><a href="#原子" class="headerlink" title="原子"></a>原子</h3><p>原子是正则表达式的最基本的组成单位，包括未显示指定为元字符的打印和非打印字符。</p>
+<h4 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h4><p>大小写字母字符、所有数字等。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/5/      // 匹配字符串中是否有5这个数字</span><br><span class="line">/abc/    // 匹配字符串中是否有abc这串字符</span><br></pre></td></tr></table></figure>
+
+<h4 id="特殊字符和元字符"><a href="#特殊字符和元字符" class="headerlink" title="特殊字符和元字符"></a>特殊字符和元字符</h4><p>任何一个符号都可以作为原子使用，但如果这个符号在正则表达式中有一些特殊意义，就必须使用转义字符 \ 取消它的特殊意义，将其变成一个普通的原子。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/\&quot;/    // 双引号</span><br><span class="line">/\&apos;/    // 单引号</span><br><span class="line">/\+/    // 加号</span><br><span class="line">/\*/    // 乘号</span><br><span class="line">/\./    // 英文句号</span><br><span class="line">/\&lt;br\/\&gt;/    // 尖括号、斜杠等，匹配字符串中是否有HTML的&lt;br/&gt;标记字符</span><br></pre></td></tr></table></figure>
+
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(0)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h4 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h4><p>字符串中的格式控制符号，例如空格、回车及制表符号等。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\f</td>
+<td>匹配一个换页符，等价于 \x0c 和 \cL</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>匹配一个换行符，等价于 \x0a 和 \cJ</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>匹配一个回车符，等价于 \x0d 和 \cM</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>匹配一个制表符，等价于 \x09 和 \cI</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>匹配一个垂直制表符，等价于 \x0b 和 \cK</td>
+</tr>
+</tbody></table>
+<h4 id="通用字符类型"><a href="#通用字符类型" class="headerlink" title="通用字符类型"></a>通用字符类型</h4><p>前面介绍的三类字符作为原子，都是一个原子匹配一个字符。而有时我们需要一个原子匹配一类字符，例如匹配所有数字，或者匹配所有字母，这时就要使用“通用字符类型”了。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\d</td>
+<td>匹配任意一个十进制数字，等价于[0-9]</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>匹配任意一个除十进制数字以外的字符，等价于[^0-9]</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意一个空白字符，包括空格、制表符、换页符等，等价于 [\f\n\r\t\v]</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>匹配任意一个<strong>非</strong>空白字符，等价于 [^\f\n\r\t\v]</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配任意一个数字、字母或下划线，等价于[0-9a-zA-Z]</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>匹配任意一个<strong>非</strong>数字、字母或下划线的字符，等价于[^0-9a-zA-Z]</td>
+</tr>
+</tbody></table>
+<h4 id="自定义原子表"><a href="#自定义原子表" class="headerlink" title="自定义原子表"></a>自定义原子表</h4><p>通用字符类型（类原子）的自定义扩充。<br>通过原子表<code>[···]</code>匹配一个属于原子表内的字符；<br>通过原子表<code>[^···]</code>匹配排除原子表中所有原子的一个字符。<br>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/[apj]sp/     // 匹配asp、psp、jsp三种字符串</span><br><span class="line">/[^apj]sp/    // 匹配除asp、psp、jsp三种以外的*sp字符串，如：xsp、ysp等</span><br><span class="line">/0[xX][0-9a-fA-f]+/    // 匹配十六进制数，如：0x2f、0X3AE等</span><br></pre></td></tr></table></figure>
+
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(1)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><p>元字符用于修饰原子，不能单独出现。</p>
+<h4 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h4><p>用来指定正则表达式的一个给定原子必须要出现多少次才能满足匹配。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>匹配前面的子表达式零次或多次，等价于{0,}</td>
+</tr>
+<tr>
+<td>+</td>
+<td>匹配前面的子表达式一次或多次，等价于{1,}</td>
+</tr>
+<tr>
+<td>?</td>
+<td>匹配前面的子表达式零次或一次，等价于{0,1}</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>n是一个非负整数，匹配确定的n次（子字符串连续出现n次，中间不能间断）</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>n是一个非负整数，至少匹配n次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>m和n均为非负整数，且n&lt;=m，最少匹配n次且最多匹配m次</td>
+</tr>
+</tbody></table>
+<h4 id="边界限制"><a href="#边界限制" class="headerlink" title="边界限制"></a>边界限制</h4><p>用来限定字符串或单词的边界范围，以获得更准确的匹配结果。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>匹配输入字符串的开始位置</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配输入字符串的结束位置</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配一个单词边界（可以是前边界，也可以是后边界），也就是指单词和空格间的位置。</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配非单词边界</td>
+</tr>
+</tbody></table>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/^this/     // 匹配以 &quot;this&quot; 开头的字符串</span><br><span class="line">/\bis\b/    // 只能匹配 &quot;is&quot;</span><br><span class="line">/\Bis/      // 不能匹配 &quot;is&quot; 打头的单词，可以匹配 &quot;this&quot;、&quot;thisth&quot; 等</span><br></pre></td></tr></table></figure>
+
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(2)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h4 id="英文句号"><a href="#英文句号" class="headerlink" title="英文句号"></a>英文句号</h4><p>匹配目标中的任何一个字符，包括不可打印字符，但默认换行符除外。通常，可以使用<code>.*?</code>或<code>.+?</code>组合来匹配除换行符以外的任何字符串。如：<br><span style="color: #bbb">→<code>*</code>和<code>+</code>后面加<code>?</code>是什么情况？</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/a.b/    // 匹配在a和b之间有任意一个字符的字符串，例如axb、ayb、azb等</span><br><span class="line">/&lt;b&gt;.*?&lt;\/b&gt;/    // 匹配以&lt;b&gt;标签开始、&lt;/b&gt;标签结束的任何不包括换行符的字符串</span><br></pre></td></tr></table></figure>
+
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(3)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h4 id="模式选择符"><a href="#模式选择符" class="headerlink" title="模式选择符"></a>模式选择符</h4><p>竖线字符<code>|</code>用于分隔两个可以匹配的选项。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Linux|Apache|MySQL|PHP/    // 匹配Linux、Apache、MySQL、PHP中的一种</span><br></pre></td></tr></table></figure>
+
+<p>模式选择符的运算优先级是最低的，所以不会变成仅分隔左右两个字母的情况。（相当于Linux、Apache、MySQL、PHP都套上了括号）</p>
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(4)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h4 id="模式单元"><a href="#模式单元" class="headerlink" title="模式单元"></a>模式单元</h4><p>使用元字符<code>()</code>将多个原子组成一个大原子，将其当作一个单元独立使用，与数学表达式中的括号作用类似。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(very)*good/    // 匹配good、very good、very very good等</span><br></pre></td></tr></table></figure>
+
+<h4 id="后向引用"><a href="#后向引用" class="headerlink" title="后向引用"></a>后向引用</h4><p>元字符<code>()</code>包裹单元匹配到的字符串会存储到一个临时缓冲区中，之后可以通过<code>\n</code>再次引用匹配。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/^\d&#123;4&#125;\W\d&#123;2&#125;\W\d&#123;2&#125;$/      // 匹配日期的格式，如2008-08/08、2008/08-08等</span><br><span class="line">/^\d&#123;4&#125;(\W)\d&#123;2&#125;\1\d&#123;2&#125;$/    // 匹配日期的格式，如2008-08-08、2008/08/08等</span><br></pre></td></tr></table></figure>
+
+
+<p>当需要使用模式单元<code>()</code>而又不想形成临时缓冲区时，可以使用非获取匹配，有以下三种非匹配获取：</p>
+<p>1) <code>(?:pattern)</code>：匹配pattern但不对匹配结果进行存储。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/(Windows)(Linux)\\2OS/       // 使用 &quot;\2&quot; 再次引用第二个缓冲区中的字符串Linux</span><br><span class="line">/(?:Windows)(Linux)\\1OS/     // 使用了 &quot;?:&quot; 忽略了第一个子表达式的存储，所以 &quot;\1&quot; 引用的就是Linux</span><br></pre></td></tr></table></figure>
+
+<p>2) <code>(?=pattern)</code>：正向预查，在任何匹配pattern的字符串开始处匹配查找字符串。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Windows(?=95|98|NT|2000)/    // 可以匹配Windows2000中的Windows，但不能匹配Windows3.1中的Windows。</span><br></pre></td></tr></table></figure>
+
+<p>3) <code>(?!pattern)</code>：负向预查，在任何不匹配 pattern 的字符串开始处匹配查找字符串。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Windows(?!95|98|NT|2000)/    // 可以匹配Windows3.1中的Windows，但不能匹配Windows2000中的Windows。</span><br></pre></td></tr></table></figure>
+
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(5)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><p>相同优先级的从左到右进行运算，不同优先级的运算先高后低。下表按优先级由高到低展示：</p>
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>|转义符</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>(pattern)、(?:pattern)、(?=pattern)、(?!pattern)、[]</td>
+<td>模式单元与原子表</td>
+</tr>
+<tr>
+<td>3</td>
+<td>*、+、?、{n}、{n,}、{n,m}</td>
+<td>限定符</td>
+</tr>
+<tr>
+<td>4</td>
+<td>^、 $、原子字符等</td>
+<td>边界限制等</td>
+</tr>
+<tr>
+<td>5</td>
+<td>竖线字符</td>
+<td>模式选择符，或</td>
+</tr>
+</tbody></table>
+<h2 id="正则表达式的使用"><a href="#正则表达式的使用" class="headerlink" title="正则表达式的使用"></a>正则表达式的使用</h2><p><strong>[参考]</strong><a href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp" target="_blank" rel="noopener">w3school-JavaScript RegExp对象</a></p>
+<h3 id="RegExp对象属性"><a href="#RegExp对象属性" class="headerlink" title="RegExp对象属性:"></a>RegExp对象属性:</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>global</td>
+<td>RegExp对象是否具有标志g</td>
+</tr>
+<tr>
+<td>ignoreCase</td>
+<td>RegExp对象是否具有标志i</td>
+</tr>
+<tr>
+<td>multiline</td>
+<td>RegExp对象是否具有标志m</td>
+</tr>
+<tr>
+<td>lastIndex</td>
+<td>返回一个整数，标示开始下一次匹配的起始字符位置</td>
+</tr>
+<tr>
+<td>source</td>
+<td>正则表达式的源文本</td>
+</tr>
+</tbody></table>
+<p>关于lastIndex的补充说明：<br>上次匹配的结果是由方法RegExp.exec()和RegExp.test()找到，它们都以lastIndex属性所指的位置作为下次检索的起始点。这样，就可以通过反复调用这两个方法来遍历一个字符串中的所有匹配文本。<br>该属性是可读可写的。只要目标字符串的下一次搜索开始，就可以对它进行设置。当方法exec()或test()再也找不到可以匹配的文本时，它们会自动把lastIndex属性重置为0。<br>不具有标志g和不表示全局模式的RegExp对象不能使用lastIndex属性。<br>如果在成功地匹配了某个字符串之后就开始检索另一个新的字符串，需要手动地把这个属性设置为0。</p>
+<p>试一试：<br><textarea rows="4" style="width: 99%; resize: none;"></textarea><br><button onclick="show(6)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h3 id="RegExp对象方法："><a href="#RegExp对象方法：" class="headerlink" title="RegExp对象方法："></a>RegExp对象方法：</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compile</td>
+<td>编译正则表达式</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>检索字符串中指定的值，返回找到的值，并确定其位置等（与match相似）</td>
+</tr>
+<tr>
+<td>test</td>
+<td>检索字符串中指定的值是否存在，返回true或false</td>
+</tr>
+</tbody></table>
+<p>关于exec的补充描述：经尝试，exec似乎没有全局搜索出多个匹配结果的能力，其结果与match非全局搜索时的结果一致，但是match全局搜索获得的是数组形式。</p>
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(7)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h3 id="支持正则表达式的String对象的方法："><a href="#支持正则表达式的String对象的方法：" class="headerlink" title="支持正则表达式的String对象的方法："></a>支持正则表达式的String对象的方法：</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>search</td>
+<td>检索与正则表达式相匹配的值，返回第一个匹配的位置（忽略全局搜索。如果没有搜到，返回-1）</td>
+</tr>
+<tr>
+<td>match</td>
+<td>找到一个或多个正则表达式的匹配，返回匹配值（全局搜索只返回匹配值；非全局搜索返回[匹配值, 位置, 被查找的字符串]。如果没有搜到，返回null）</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>替换与正则表达式匹配的子串：<br><code>stringObject.replace(regexp/substr, replacement)</code></td>
+</tr>
+<tr>
+<td>split</td>
+<td>把字符串分割为字符串数组：<br><code>stringObject.split(separator, [howmany])</code><br>（separator为字符串或正则表达式，howmany为返回的数组的最大长度，可选，默认全部返回）</td>
+</tr>
+</tbody></table>
+<p>试一试：<br><textarea rows="2" style="width: 99%; resize: none;"></textarea><br><button onclick="show(8)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<h2 id="正则表达式的三种模式"><a href="#正则表达式的三种模式" class="headerlink" title="正则表达式的三种模式"></a>正则表达式的三种模式</h2><p><strong>[参考]</strong><a href="http://www.cnblogs.com/kevin-yuan/archive/2012/09/02/2667428.html" target="_blank" rel="noopener">正则表达式的三种模式【贪婪、勉强、侵占】的分析</a></p>
+<p>正则表达式的三种模式分别为贪婪模式<code>.*</code>、勉强模式<code>.*?</code>以及侵占模式<code>.*+</code>。假设有一字符串：xfooxxxxxxfoo</p>
+<p>1) 贪婪模式 <code>.*foo</code></p>
+<p>正则表达式的默认模式。匹配从多到少依次尝试，直到匹配成功或匹配完所有可能。贪婪模式下的匹配结果为：xfooxxxxxxfoo。</p>
+<p>2) 勉强模式 <code>.*?foo</code></p>
+<p>最小匹配方式，匹配从最少开始尝试，直到匹配成功。勉强模式下的匹配结果为：xfoo, xxxxxxfoo。</p>
+<p>3) 侵占模式 <code>.*+foo</code></p>
+<p>又称占用模式，匹配以最多匹配的角度出发，一旦匹配成功就不再返回尝试，所以即使后面的项不能匹配，也直接以匹配失败结束。侵占模式下的匹配结果为：null。<br><span style="color: #bbb">实际尝试时报错……似乎不能识别这种表达形式</span></p>
+<p>试一试：<br><textarea rows="3" style="width: 99%; resize: none;"></textarea><br><button onclick="show(9)" style="margin-right: 1em;">run！</button><span class="showArea"></span></p>
+<script type="text/javascript">
+    var text = document.getElementsByTagName('textarea');
+    var area = document.getElementsByClassName('showArea');
+    text[0].innerHTML = "var str = '正则表达式<br/>像乱码';\nvar reg = /\\<br\\/\\>/g;\nstr.match(reg)";
+    text[1].innerHTML = "var str = 'asp, xsp';\nvar reg = /[^apj]sp/g;\nstr.match(reg)";
+    text[2].innerHTML = "var str = 'this, is, thisth';\nvar reg = /\\Bis/g;\nstr.match(reg)";
+    text[3].innerHTML = "var str = '<b>abcdefg</b>';\nvar reg = /<b>.+<\\/b>/g;\nstr.match(reg)";
+    text[4].innerHTML = "var str = 'def678 abc22abc';\nvar reg = /abc?|^def/g;\nstr.match(reg)";
+    text[5].innerHTML = "var str = '2017/11/25 2017/11-25 2017-11-25';\nvar reg = /\\d{4}(\\W)\\d{2}\\1\\d{2}/g;\nstr.match(reg)";
+    text[6].innerHTML = "var str = 'The rain in Spain stays mainly in the plain';\nvar reg = new RegExp('ain', 'g');\nreg.test(str);\nreg.lastIndex";
+    text[7].innerHTML = "var str = 'The rain in Spain stays mainly in the plain';\nvar reg = new RegExp('ain', 'g');\nreg.exec(str);";
+    text[8].innerHTML = "var str = 'The rain in Spain stays mainly in the plain';\nstr.split(' ', 5);";
+    text[9].innerHTML = "var str = 'xfooxxxxxxfoo';\nvar reg = /.*+foo/;\nstr.match(reg);";
+    function show(index) {
+        area[index].innerText = ""
+        try {
+            var str, result = eval(text[index].value)
+            if (typeof result == 'object') {
+                str = "["
+                for (var i in result) {
+                    if (i.match(/^(\d)+$/)) {  // 数组
+                        str += ((typeof result[i] == 'string')? ('"' + result[i] + '"'): (result[i].toString())) + ', '
+                    } else{  // 对象
+                        str += i + ': ' + ((typeof result[i] == 'string')? ('"' + result[i] + '"'): (result[i].toString())) + ', '
+                    }
+                }
+                str = str.substr(0, str.length-2)
+                str += "]"
+            } else if (result == undefined) {
+                str = ''
+            } else {
+                str = result.toString()
+            }
+        } catch (err) {
+            str = err
+        } finally {
+            area[index].innerText = str
+        }
+    }
+</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/正则表达式/" rel="tag"># 正则表达式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/06/markdown 语法/" rel="next" title="markdown 语法">
+                <i class="fa fa-chevron-left"></i> markdown 语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/30/前端性能优化的关键时间点/" rel="prev" title="前端性能优化的关键时间点">
+                前端性能优化的关键时间点 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">随云の遐想</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的定义"><span class="nav-number">1.</span> <span class="nav-text">正则表达式的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的书写"><span class="nav-number">2.</span> <span class="nav-text">正则表达式的书写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原子"><span class="nav-number">2.1.</span> <span class="nav-text">原子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通字符"><span class="nav-number">2.1.1.</span> <span class="nav-text">普通字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊字符和元字符"><span class="nav-number">2.1.2.</span> <span class="nav-text">特殊字符和元字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非打印字符"><span class="nav-number">2.1.3.</span> <span class="nav-text">非打印字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通用字符类型"><span class="nav-number">2.1.4.</span> <span class="nav-text">通用字符类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义原子表"><span class="nav-number">2.1.5.</span> <span class="nav-text">自定义原子表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">2.2.</span> <span class="nav-text">元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#限定符"><span class="nav-number">2.2.1.</span> <span class="nav-text">限定符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边界限制"><span class="nav-number">2.2.2.</span> <span class="nav-text">边界限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#英文句号"><span class="nav-number">2.2.3.</span> <span class="nav-text">英文句号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式选择符"><span class="nav-number">2.2.4.</span> <span class="nav-text">模式选择符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模式单元"><span class="nav-number">2.2.5.</span> <span class="nav-text">模式单元</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后向引用"><span class="nav-number">2.2.6.</span> <span class="nav-text">后向引用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符优先级"><span class="nav-number">3.</span> <span class="nav-text">运算符优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的使用"><span class="nav-number">4.</span> <span class="nav-text">正则表达式的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp对象属性"><span class="nav-number">4.1.</span> <span class="nav-text">RegExp对象属性:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RegExp对象方法："><span class="nav-number">4.2.</span> <span class="nav-text">RegExp对象方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持正则表达式的String对象的方法："><span class="nav-number">4.3.</span> <span class="nav-text">支持正则表达式的String对象的方法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的三种模式"><span class="nav-number">5.</span> <span class="nav-text">正则表达式的三种模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">随云の遐想</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

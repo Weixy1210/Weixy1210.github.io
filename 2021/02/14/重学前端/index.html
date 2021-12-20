@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="极客教程">
+<meta name="keywords" content="javaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重学前端">
+<meta property="og:url" content="http://yoursite.com/2021/02/14/重学前端/index.html">
+<meta property="og:site_name" content="世外桃源">
+<meta property="og:description" content="极客教程">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-04-03T07:12:22.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重学前端">
+<meta name="twitter:description" content="极客教程">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/14/重学前端/">
+
+
+
+
+
+  <title>重学前端 | 世外桃源</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">世外桃源</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/14/重学前端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="随云の遐想">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世外桃源">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重学前端</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-14T14:38:00+08:00">
+                2021-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阅读笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  极客教程
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p><strong>形成自己的知识架构</strong></p>
+<ul>
+<li><p>JavaScript</p>
+<p>  编程语言的一般规律: 用一定的<strong>词法和语法</strong>, 表达一定<strong>语义</strong>, 从而操作<strong>运行时</strong>.</p>
+<p>  程序 (运行时) = 算法 (执行过程) + 数据结构</p>
+<ol>
+<li>执行过程: 程序与模块, 事件循环, 微任务, 函数, 语句级的执行</li>
+<li>数据结构: 7 种基本类型, 实例 (内置对象)</li>
+</ol>
+</li>
+<li><p>HTML</p>
+<p>  标签:<br>  1. 文档元信息 - 通常是出现在 head 标签中的元素, 包含了描述文档自身的一些信息<br>  2. 语义相关 - 扩展了纯文本, 表达文章结构, 不同语言要素的标签<br>  3. 链接 - 提供到文档内和文档外的链接<br>  4. 替换型标签 - 引入声音, 图片, 视频等外部元素替换自身的一类标签<br>  5. 表单 - 用于填写和提交信息的一类标签<br>  6. 表格 - 表头, 表尾, 单元格等表格的结构</p>
+<p>  实体, 命名空间</p>
+<p>  补充标准: ARIA</p>
+</li>
+<li><p>CSS</p>
+<p>  语法: @rule, 选择器, 单位等</p>
+<p>  功能: 布局 (正常流, 弹性布局), 绘制 (图形相关的, 文字相关的) 和交互等</p>
+</li>
+<li><p>浏览器的实现原理和 API</p>
+<p>  解析, 构建 DOM 树, 计算 CSS, 渲染, 合成和绘制</p>
+<p>  API: 事件, DOM, CSSOM</p>
+</li>
+</ul>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><ul>
+<li><p>Undefined </p>
+<p>  Undefined 是一种类型, 值为 undefined, 表示 “未定义”, 一般用全局变量 undefined 来表达这个值. </p>
+<p>  既然 undefined 是个变量, 因此存在被篡改的风险, 尽管 es5 后对将其设定成只读类型, 但在局部作用域上, 仍可修改.</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> test = <span class="function"><span class="params">()</span> =&gt;</span> &#123; </span><br><span class="line">    <span class="keyword">let</span> <span class="literal">undefined</span> = <span class="number">5</span>; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="literal">undefined</span>); <span class="comment">// 5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>建议将 undefined 替换成 void(0)</strong></p>
+</li>
+<li><p>Null </p>
+<p>  Null 是一种类型, 值为 null, 表示 “定义了但是为空”. null 是关键字, 不会被篡改.</p>
+</li>
+<li><p>String</p>
+<p>  UTF16 编码, 每个 UTF16 单元为一个字符, 最大长度是 2^53 - 1.</p>
+<p>  字符串是永远无法变更的, 一旦字符串构造出来, 无法用任何方式改变字符串的内容, 所以字符串具有值类型的特征.</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">"123"</span>;</span><br><span class="line">str[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// str 仍然是 "123"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Number</p>
+<p>  NaN  Infinity  -Infinity  +0  -0</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>/<span class="number">0</span>  <span class="comment">// NaN</span></span><br><span class="line"><span class="number">1</span>/+<span class="number">0</span> <span class="comment">// Infinity</span></span><br><span class="line"><span class="number">1</span>/<span class="number">-0</span> <span class="comment">// -Infinity</span></span><br></pre></td></tr></table></figure>
+
+<p>  双精度浮点数</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span> <span class="comment">// false</span></span><br><span class="line"><span class="built_in">Math</span>.abs(<span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span>) &lt;= <span class="built_in">Number</span>.EPSILON <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>  * Number.EPSILON 最小精度</p>
+</li>
+<li><p>Object</p>
+<p>  <code>Number(3)</code> - Number 类型, <code>new Number(3)</code> - Object 类型</p>
+<p>  为什么给对象添加的方法能用在基本类型上?<br>  - 运算符提供了装箱操作, 它会根据基础类型构造一个临时对象, 使得我们能在基础类型上调用对应对象的方法.</p>
+</li>
+<li><p>类型转换</p>
+<p>  Number 是比 parseInt 和 parseFloat 更好的选择.<br>  parseFloat 以十进制转换字符串; parseInt 根据字符串的开头字符决定以什么进制转换字符串 (建议使用时, 始终传入第二个参数)</p>
+<p>  装箱 -&gt; 显式装箱: Object()<br>  拆箱 -&gt; 转换 Number: 先调用 valueOf 再调用 toString, 两个都未获得数字类型, 则抛错; 转换 String: 先调用 toString 再调用 valueOf, 两个都未获得数字类型, 则抛错.</p>
+<p>  *不用原生的 Number 和 parseInt, 使用 JavaScript 实现从 String 到 Number 的转换:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strToNum</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> chars = str.split(<span class="string">""</span>).map(<span class="function"><span class="params">e</span> =&gt;</span> e.charCodeAt(<span class="number">0</span>) - <span class="string">"0"</span>.charCodeAt(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">let</span> n = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> char <span class="keyword">of</span> chars) n = n * <span class="number">10</span> + char;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><p>对象具有唯一标识性 -&gt; 对象具有唯一标识的内存地址</p>
+<p>JavaScript 用一组特征 (attribute: value, writable, getter, setter, enumerable, configurable) 来描述属性 (property: 数据属性 &amp; 访问器属性 getter/setter)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    a: <span class="string">"a"</span>,</span><br><span class="line">    <span class="keyword">get</span> b () &#123; <span class="keyword">return</span> <span class="string">"b"</span> &#125;,</span><br><span class="line">    <span class="keyword">set</span> c (val) &#123; <span class="keyword">this</span>.a = val &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.a <span class="comment">// "a"</span></span><br><span class="line">obj.b <span class="comment">// "b"</span></span><br><span class="line">obj.c <span class="comment">// undefined</span></span><br><span class="line">obj.a = <span class="number">1</span>; <span class="comment">// 1</span></span><br><span class="line">obj.b = <span class="number">2</span>; <span class="comment">// "b"</span></span><br><span class="line">obj.c = <span class="number">3</span>; <span class="comment">// obj.a -&gt; 3</span></span><br></pre></td></tr></table></figure>
+
+<p>对象类型:</p>
+<ul>
+<li><p>宿主对象 (host Objects)<br>  由 JavaScript 宿主环境提供的对象, 它们的行为完全由宿主环境决定.<br>  window, window.document</p>
+</li>
+<li><p>内置对象 (Built-in Objects)<br>  由 JavaScript 语言提供的对象:<br>  - 固有对象 (Intrinsic Objects): Infinity, NaN, undefined… 由标准规定, 随着 JavaScript 运行时创建而自动创建的对象实例. 固有对象在任何 JavaScript 代码执行前就已经被创建出来了, 它们通常扮演者类似基础库的角色.<br>  - 原生对象 (Native Objects): Array, Boolean, Proxy, Error… 原生对象基本无法用纯 JavaScript 代码实现, 也无法用 class/extend 语法来继承, 是为了特定能力或者性能, 而设计出来的 “特权对象”.<br>  - 普通对象 (Ordinary Objects): 由 {} 语法, Object 构造器或者 class 关键字定义类创建的对象, 它能够被原型继承.</p>
+</li>
+</ul>
+<p>函数对象: 具有 [[call]] 私有字段的对象, 构造器对象: 具有 [[construct]] 私有字段的对象.</p>
+<p>[[construct]] 的执行过程:<br>1. 以 Object.prototype 为原型创建一个新对象<br>2. 以新对象为 this, 执行函数的[[call]]<br>3. 如果 [[call]] 的返回值是对象, 那么返回这个对象, 否则返回第一步创建的新对象. </p>
+<p>箭头函数实现私有属性:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.val = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getValue: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.val</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> Test;</span><br><span class="line">test.getValue(); <span class="comment">//100</span></span><br><span class="line">test.val; <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="原型系统"><a href="#原型系统" class="headerlink" title="原型系统"></a>原型系统</h2><p>所有对象都有私有字段[[prototype]], 指向该对象的原型.</p>
+<p>读一个属性, 如果对象本身没有,则会继续访问对象的原型, 直到原型为空或者找到为止.</p>
+<p>原型系统的 “复制操作”: 并不真的去复制一个原型对象, 而是使得新对象持有一个原型的引用.</p>
+<p>ES6:<br>- Object.create 根据指定的原型创建新对象, 原型可以是 null<br>- Object.getPrototypeOf 获得一个对象的原型<br>- Object.setPrototypeOf 设置一个对象的原型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cat = &#123;</span><br><span class="line">    say () &#123; <span class="built_in">console</span>.log(<span class="string">"meow~"</span>) &#125;,</span><br><span class="line">    jump () &#123; <span class="built_in">console</span>.log(<span class="string">"jump"</span>) &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> tiger = <span class="built_in">Object</span>.create(cat,  &#123;</span><br><span class="line">    say: &#123;</span><br><span class="line">        writable:<span class="literal">true</span>,</span><br><span class="line">        configurable:<span class="literal">true</span>,</span><br><span class="line">        enumerable:<span class="literal">true</span>,</span><br><span class="line">        value: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">"roar!"</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> anotherCat = <span class="built_in">Object</span>.create(cat);</span><br><span class="line">anotherCat.say();</span><br><span class="line"><span class="keyword">var</span> anotherTiger = <span class="built_in">Object</span>.create(tiger);</span><br><span class="line">anotherTiger.say();</span><br></pre></td></tr></table></figure>
+
+<p>new 运算符:<br>接受一个构造器和一组调用参数, 执行以下操作:<br>1. 以构造器的 prototype 属性 (注意与私有字段 [[prototype]] 的区分) 为原型, 创建新对象<br>2. 将 this 和调用参数传给构造器执行<br>3. 如果构造器返回的是对象, 则返回, 否则返回第一步创建的对象</p>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><ul>
+<li><p>宏观任务 &amp; 微观任务<br>  宏观任务: 宿主发起的任务, setTimeout, event…<br>  微观任务: JavaScript 引擎自己发起的任务, promise</p>
+</li>
+<li><p>事件循环<br>  底层实现: 一个跑在独立线程中的循环<br>  JavaScript 引擎等待宿主环境分配宏观任务, 一次循环执行一个宏观任务, 清空全部微观任务</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"a"</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;);</span><br><span class="line">r.then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"c"</span>)); <span class="comment">// 异步任务</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"b"</span>);</span><br><span class="line"><span class="comment">// a b c</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> r = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"a"</span>);</span><br><span class="line">    resolve();</span><br><span class="line">&#125;);</span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"d"</span>), <span class="number">0</span>); <span class="comment">// 宏任务</span></span><br><span class="line">r.then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"c"</span>)); <span class="comment">// 微任务</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"b"</span>);</span><br><span class="line"><span class="comment">// a b c d</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>async &amp; await</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sleep = <span class="function"><span class="params">duration</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    setTimeout(resolve, duration)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">light</span> (<span class="params">color, time</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(color);</span><br><span class="line">    <span class="keyword">await</span> sleep(time);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">await</span> light(<span class="string">"red"</span>, <span class="number">60000</span>);</span><br><span class="line">        <span class="keyword">await</span> light(<span class="string">"yellow"</span>, <span class="number">3000</span>);</span><br><span class="line">        <span class="keyword">await</span> light(<span class="string">"green"</span>, <span class="number">60000</span>);</span><br><span class="line">        <span class="keyword">await</span> light(<span class="string">"yellow"</span>, <span class="number">3000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">start();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="作用域与函数"><a href="#作用域与函数" class="headerlink" title="作用域与函数"></a>作用域与函数</h3><p>闭包: 一个绑定了执行环境的函数</p>
+<p>执行上下文: 一段代码 (包括函数), 执行所需的所有信息. 作用域是被涵盖其中的一部分.</p>
+<ul>
+<li><p>IIFE: 立即执行的函数表达式</p>
+<p>  自执行函数的推荐写法: </p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a;</span><br><span class="line">    <span class="comment">//code</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+
+<p>  用括号加号的缺陷: 若上一行缺少分号, 则会出现编译错误.<br>  语义上 void 运算表示忽略后面表达式的值, 变成 undefined, 我们确实不关心 IIFE 的返回值, 所以语义也更为合理.</p>
+</li>
+<li><p>this<br>  - 普通函数: 调用函数时使用的引用, 决定了函数执行时刻的 this 值.<br>  - 箭头函数: this 为函数声明时的上层对象.<br>  * call, bind 和 apply 可以作用于箭头函数, 但不能改变其 this.</p>
+<p>  函数私有属性 [[Environment]]: 记录外层词法环境</p>
+<p>  函数私有属性 [[thisMode]] 的三种取值:<br>  1. lexical, 从上下文中找 this<br>  2. global, 当 this 为 undefined 时, 取全局对象<br>  3. 当严格模式时使用, this 严格按照调用时传入的值, 可能为 null 或者 undefined<br>  * class 内按 strict 模式执行</p>
+</li>
+</ul>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>每执行一个语句产生一个 Completion Record, Completion Record 有三个信息:</p>
+<ul>
+<li><p>[[type]]<br>  表示完成的类型, 有 break continue return throw 和 normal 几种类型</p>
+</li>
+<li><p>[[value]]<br>  表示语句的返回值, 如果语句没有, 则是 empty</p>
+<p>  在 chrome 控制台执行语句, 显示的就是语句的返回值:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">1</span>; <span class="comment">// undefined</span></span><br><span class="line">i = <span class="number">1</span>;     <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[[target]]<br>  表示语句的目标, 通常是一个 JavaScript 标签</p>
+<p>  应用于跳出多层循环 (outer, inner 是 JavaScript 标签):</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">outer: <span class="keyword">while</span>(<span class="literal">true</span>) &#123; </span><br><span class="line">    inner: <span class="keyword">while</span>(<span class="literal">true</span>) &#123; </span><br><span class="line">        <span class="keyword">break</span> outer; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="词法"><a href="#词法" class="headerlink" title="词法"></a>词法</h2><p>数字直接量支持十进制数, 二进制整数, 八进制整数和十六进制整数. 十进制的 Number 可以带小数, 小数点前后部分都可以省略, 但是不能同时省略.</p>
+<p>以下都是合法的十进制数字表示:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">.01</span></span><br><span class="line"><span class="number">12.</span></span><br><span class="line"><span class="number">12.01</span></span><br></pre></td></tr></table></figure>
+
+<p>=&gt; <code>12.</code> 会被优先看做一个数字直接量:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">12.</span>toString()  <span class="comment">// Uncaught SyntaxError: Invalid or unexpected token</span></span><br><span class="line"><span class="number">12</span> .toString() <span class="comment">// '12'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="关于分号"><a href="#关于分号" class="headerlink" title="关于分号"></a>关于分号</h3><p>自动插入分号规则:<br>- 有换行符, 且下一个符号是不符合语法的, 那么就尝试插入分号<br>- 有换行符, 且语法中规定此处不能有换行符, 那么就自动插入分号<br>- 源代码结束处, 不能形成完整的脚本或者模块结构, 那么就自动插入分号</p>
+<p>no LineTerminator here 规则 (不能有换行符的场景):<br>- 带标签的 continue 和 break 后<br>- return 后<br>- 后自增, 后自减运算符前<br>- throw 与 Exception 之间<br>- async 后<br>- 箭头函数的箭头前<br>- yield 后</p>
+<p>不写分号需要注意的情况:<br>- 以括号开头的语句, 会被理解为传参<br>- 以数组开头的语句, 会被理解为下标<br>- 以正则表达式开头的语句, 会被理解为除号</p>
+<h3 id="脚本-amp-模块"><a href="#脚本-amp-模块" class="headerlink" title="脚本 &amp; 模块"></a>脚本 &amp; 模块</h3><p>JavaScript 有两种源文件: 脚本 &amp; 模块.</p>
+<p>脚本是可以由浏览器或者 node 环境引入执行的, 而模块只能由 JavaScript 代码用 import 引入执行.</p>
+<p>现代浏览器可以支持用 script 标签引入模块或者脚本. 如果要引入模块, 必须给 script 标签添加 <code>type=&quot;module&quot;</code>, 如果引入脚本, 则不需要 type.</p>
+<h3 id="预处理机制"><a href="#预处理机制" class="headerlink" title="预处理机制"></a>预处理机制</h3><p>var: 提前声明, 不赋值</p>
+<p>function: 提前声明, 且赋值 (if 中不赋值)</p>
+<p>let, const: 提前声明, 且设定访问抛错, 块级作用域</p>
+<p>class: 提前声明, 且设定访问抛错, 块级作用域</p>
+<h3 id="指令序言"><a href="#指令序言" class="headerlink" title="指令序言"></a>指令序言</h3><p>“use strict” (单双引号都行)</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><ul>
+<li><p>乘方运算符 <code>**</code> 是右结合的</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span> ** <span class="number">3</span> ** <span class="number">2</span> &lt;=&gt; <span class="number">4</span> ** (<span class="number">3</span> ** <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>位移运算符<br>  <code>&lt;&lt;</code> 向左移位, <code>&gt;&gt;</code> 向右移位<br>  左移 n 位相当于乘以 2 的 n 次方，右移 n 位相当于除以 2 取整 n 次<br>  * 在 JavaScript 中, 二进制操作整数并不能提高性能</p>
+</li>
+<li><p><code>==</code><br>  undefined 与 null 相等<br>  字符串和 bool 都转为数字再比较<br>  对象转换成 primitive 类型再比较<br>  * 除数字与字符串的比较, 不建议使用</p>
+</li>
+<li><p>位运算<br>  两次异或运算相当于取消的应用:</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">102</span>, b = <span class="number">324</span>;</span><br><span class="line">a = a ^ b;</span><br><span class="line">b = a ^ b;</span><br><span class="line">a = a ^ b;</span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 324</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 102</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="语义化标签"><a href="#语义化标签" class="headerlink" title="语义化标签"></a>语义化标签</h2><p>语义化能很好的支持浏览器 “阅读模式”, 提高搜索引擎命中率, 但是 <strong>“用对” 比 “不用” 好, “不用” 比 “用错” 好</strong></p>
+<p>em 标签表示重音, 与 strong 标签语义不同</p>
+<p>abbr 标签表示缩写: <code>&lt;abbr title=&quot;World Wide Web&quot;&gt;WWW&lt;/abbr&gt;</code></p>
+<p>hr 标签: 含有语义的分隔线, 表示故事走向的转变或者话题的转变</p>
+<p>hgroup: 标题组, 可以改变标题标签的语义, 从原本的多级标题变成同一标题的不同组成部分</p>
+<p>pre 标签: 表示这部分内容是预先排版过的，不需要浏览器进行排版</p>
+<p>section 可以使标题标签降级</p>
+<p>article 表示具有一定独立性质的文章, 与 body 具有相似的结构</p>
+<h2 id="元信息类标签"><a href="#元信息类标签" class="headerlink" title="元信息类标签"></a>元信息类标签</h2><p>head, title, base (页面的基准 URL), meta (元信息通用标签)</p>
+<p>关于 meta 的几个重要功能:</p>
+<ul>
+<li><p>name &amp; content<br>  meta 标签一般包含 name 和 content 两个属性, name 表示元信息的名, content 则用于表示元信息的值, 支持自定义.</p>
+<p>  viewport: </p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  content 支持的取值:<br>  - width: 页面宽度, 可以取值具体的数字, 也可以是 device-width, 表示跟设备宽度相等<br>  - height: 页面高度, 可以取值具体的数字, 也可以是 device-height, 表示跟设备高度相等<br>  - initial-scale: 初始缩放比例<br>  - minimum-scale: 最小缩放比例<br>  - maximum-scale: 最大缩放比例<br>  - user-scalable: 是否允许用户缩放</p>
+<p>  application-name: 如果页面是 Web application, 用这个标签表示应用名称<br>  author: 页面作者<br>  description, keywords: 搜索引擎<br>  referrer: 跳转策略<br>  theme-color: 页面风格颜色, 实际并不会影响页面, 但是浏览器可能据此调整页面之外的 UI (如窗口边框或者 tab 的颜色)</p>
+</li>
+<li><p>charset<br>  HTML5 开始新增 charset 属性, 描述了 HTML 文档自身的编码形式: <code>&lt;meta charset=&quot;UTF-8&quot; &gt;</code>.<br>  在没有该描述标签时, HTTP 服务端会通过 http 头来指定正确的编码方式, 但使用 file 协议打开一个 HTML 文件, 则没有 http 头, 浏览器默认用 ASCII 字符处理.</p>
+</li>
+<li><p>http-equiv<br>  具有 http-equiv 属性的 meta 标签表示执行一个命令, 没有 name 属性.</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span>  <span class="comment">&lt;!-- 指定 http 头的 content-type 值 --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  http-equiv 还支持以下值:<br>  - content-language: 指定内容的语言<br>  - default-style: 指定默认样式表<br>  - refresh: 刷新<br>  - set-cookie: 设置 cookie<br>  - x-ua-compatible: 声明 ua 兼容性<br>  - content-security-policy: 声明内容安全策略</p>
+</li>
+</ul>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="Link-标签"><a href="#Link-标签" class="headerlink" title="Link 标签"></a>Link 标签</h3><p>通过 rel 属性来区分类型</p>
+<ul>
+<li><p>超链接型<br>  被动型链接, 在用户不操作的情况下, 它们不会被主动下载<br>  <code>&lt;link rel=&quot;canonical&quot; href=&quot;...&quot;&gt;</code> - 提示页面它的主 URL<br>  <code>&lt;link rel=&quot;alternate&quot; href=&quot;...&quot;&gt;</code> - 提示页面它的变形形式 (不同格式, 不同语言或者为不同的设备设计的版本)</p>
+</li>
+<li><p>外部资源型<br>  会被主动下载, 并且根据 rel 类型做不同的处理</p>
+<p>  <code>&lt;link rel=&quot;icon&quot; sizes=&quot;any&quot; href=&quot;...&quot;&gt;</code><br>  如果没有指定这样的 link, 浏览器一般会使用域名根目录下的 favicon.ico, 即使它并不存在<br>  HTML 标准允许一个页面出现多个 icon 型 link, 并且用 sizes 指定它适合的 icon 尺寸</p>
+<p>  预处理类<br>  dns-prefetch: 提前对一个域名做 dns 查询, 这样的 link 里面的 href 实际上只有域名有意义<br>  preconnect: 提前对一个服务器建立 tcp 连接<br>  prefetch: 提前取 href 指定的 url 的内容<br>  preload: 加载 href 指定的 url<br>  prerender: 提前渲染 href 指定的 url</p>
+<p>  modulepreload: 预先加载 JavaScript 的模块 (下载并放入内存, 并不会执行)</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 假设 app.js 中有 import "irc" 和 import "fog-machine", 而 irc.js 中有 import "helpers" --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 通过 modulepreload, 四个 JS 文件有机会被并行地下载, 提高性能 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"modulepreload"</span> <span class="attr">href</span>=<span class="string">"app.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"modulepreload"</span> <span class="attr">href</span>=<span class="string">"helpers.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"modulepreload"</span> <span class="attr">href</span>=<span class="string">"irc.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"modulepreload"</span> <span class="attr">href</span>=<span class="string">"fog-machine.js"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;xxx.css&quot; type=&quot;text/css&quot;&gt;</code><br>  样式文件的引入, type 属性非必须</p>
+</li>
+</ul>
+<h3 id="a-标签"><a href="#a-标签" class="headerlink" title="a 标签"></a>a 标签</h3><p>同时充当了链接和目标点的角色, href 属性实现链接角色 (被动型链接), name 属性实现目标点角色 (链接的目标)</p>
+<p>a 标签也可以有 rel 属性, rel 的一些特色取值:<br>tag - 本网页所属的标签<br>nofollow - 此链接不会被搜索引擎索引<br>opener - 打开的网页可以使用 window.opener 来访问当前页面的 window 对象, 这是 a 标签的默认行为<br>noopener - 此链接打开的网页无法使用 opener 来获得当前页面的窗口<br>noreferrer - 此链接打开的网页无法使用 referrer 来获得当前页面的 url</p>
+<h3 id="area-标签"><a href="#area-标签" class="headerlink" title="area 标签"></a>area 标签</h3><p>在图片的某个区域产生超链接, 必须跟 img 和 map 标签配合使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    Please select a shape:</span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"shapes.png"</span> <span class="attr">usemap</span>=<span class="string">"#shapes"</span> <span class="attr">alt</span>=<span class="string">"Four shapes are available: a red hollow box, a green circle, a blue triangle, and a yellow four-pointed star."</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">map</span> <span class="attr">name</span>=<span class="string">"shapes"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">rect</span> <span class="attr">coords</span>=<span class="string">"50,50,100,100"</span>&gt;</span> <span class="comment">&lt;!-- the hole in the red box --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">rect</span> <span class="attr">coords</span>=<span class="string">"25,25,125,125"</span> <span class="attr">href</span>=<span class="string">"red.html"</span> <span class="attr">alt</span>=<span class="string">"Red box."</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">circle</span> <span class="attr">coords</span>=<span class="string">"200,75,50"</span> <span class="attr">href</span>=<span class="string">"green.html"</span> <span class="attr">alt</span>=<span class="string">"Green circle."</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">poly</span> <span class="attr">coords</span>=<span class="string">"325,25,262,125,388,125"</span> <span class="attr">href</span>=<span class="string">"blue.html"</span> <span class="attr">alt</span>=<span class="string">"Blue triangle."</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">area</span> <span class="attr">shape</span>=<span class="string">poly</span> <span class="attr">coords</span>=<span class="string">"450,25,435,60,400,75,435,90,450,125,465,90,500,75,465,60"</span> <span class="attr">href</span>=<span class="string">"yellow.html"</span> <span class="attr">alt</span>=<span class="string">"Yellow star."</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>area 标签是非矩形热区的标签, shape 属性支持三种类型:<br>圆形: circle 或者 circ. coords 支持三个值, 分别表示中心点的 x, y 坐标和圆形半径 r<br>矩形: rect 或者 rectangle. coords 支持两个值, 分别表示两个对角顶点 x1, y1 和 x2, y2<br>多边形: poly 或者 polygon. coords 至少包括 6 个值, 表示多边形的各个顶点</p>
+<h2 id="文本实体"><a href="#文本实体" class="headerlink" title="文本实体"></a>文本实体</h2><p><code>&amp;lt;</code> - “&lt;”<br><code>&amp;gt;</code> - “&gt;”<br><code>&amp;amp;</code> - “&amp;”<br><code>&amp;nbsp;</code> - 空格<br><code>&amp;quot;</code> - 双引号<br><code>&amp;apos;</code> - 单引号</p>
+<h2 id="ARIA"><a href="#ARIA" class="headerlink" title="ARIA"></a>ARIA</h2><p>Accessible Rich Internet Applications 可访问性 (不仅仅是为视觉障碍用户服务)</p>
+<p>ARIA 的核心属性 role, 告知该 HTML 元素呈现什么功能, 但是具体的功能实现还是需要 js 代码去实现.<br>role 有以下值类别:</p>
+<ul>
+<li><p>Widget 可交互的组件<br>  Button, Checkbox, Link, Log, Scrollbar, Slider, Timer, Tooltip…</p>
+<p>  不同的类别会有对应的 ARIA 属性, 如 Checkbox 有 aria-checked 表示复选框是否已经被选中, aria-labelledby 表示复选框对应的文字; Button 有 aria-pressed 按钮是否已经被按下, aria-expanded 按钮控制的目标是否已经被展开等. 这些属性都需要 js 进行维护.</p>
+<p>  还有一些复杂的角色:<br>  - Combobox 带选项的输入框 (当输入时, 会提供若干提示选项)<br>  - Grid 表格<br>  - Radiogroup 一组互斥的单选框的容器, 内部有若干 radio<br>  - Tablist 选项卡, 包含 tab 头和 tabpanel<br>  - Listbox 可选中的列表, 内部有若干 option<br>  - Menu 菜单</p>
+</li>
+<li><p>structure 文档中的结构<br>  类似于语义化标签</p>
+<p>  Landmark 类别角色: Banner, Form, Main, Navigation, Region, Search, Contentinfo (内容说明), Complementary (补充内容)</p>
+</li>
+<li><p>window 窗体<br>  表示 “新窗口”: window, dialog, alertdialog<br>  dialog 可能会产生 “焦点陷阱”, 即当这样的角色被激活时, 焦点无法离开这个区域</p>
+</li>
+</ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="@ 语法"></a>@ 语法</h2><ul>
+<li><p>@charset<br>  用于提示 CSS 文件使用的字符编码方式</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">charset</span> <span class="string">"utf-8"</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>@import<br>  用于引入一个 CSS 文件 (@charset 规则不会被引入)</p>
+</li>
+<li><p>@media, @support<br>  @media - 设备类型判断<br>  @support - 检查环境的特性</p>
+</li>
+<li><p>@keyframes<br>  用于定义动画关键帧</p>
+</li>
+<li><p>@font-face<br>  用于定义一种字体 (icon font)</p>
+</li>
+<li><p>@namespace<br>  命名空间</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"28"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 100 28"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">desc</span>&gt;</span>Example link01 - a link on an ellipse<span class="tag">&lt;/<span class="name">desc</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">xlink:href</span>=<span class="string">"http://www.w3.org"</span>&gt;</span><span class="tag">&lt;<span class="name">text</span> <span class="attr">y</span>=<span class="string">"100%"</span>&gt;</span>name<span class="tag">&lt;/<span class="name">text</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void 0;"</span>&gt;</span>name<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">namespace</span> svg url(http://www.w3.org/<span class="number">2000</span>/svg);</span><br><span class="line">@<span class="keyword">namespace</span> html url(http://www.w3.org/<span class="number">1999</span>/xhtml);</span><br><span class="line">svg|a &#123;</span><br><span class="line">    <span class="selector-tag">stroke</span><span class="selector-pseudo">:blue</span>;</span><br><span class="line">    <span class="selector-tag">stroke-width</span><span class="selector-pseudo">:1</span>;</span><br><span class="line">&#125;</span><br><span class="line">html|a &#123;</span><br><span class="line">    <span class="selector-tag">font-size</span><span class="selector-pseudo">:40px</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="计算函数"><a href="#计算函数" class="headerlink" title="计算函数"></a>计算函数</h2><p>calc(), max(), min()</p>
+<p>toggle() - 在规则选中多于一个元素时生效, 它会在几个值之间来回切换</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> &#123; <span class="attribute">list-style-type</span>: <span class="built_in">toggle</span>(circle, square); &#125; <span class="comment">/* 让列表项的样式以圆点和方点的形式间隔出现 */</span></span><br></pre></td></tr></table></figure>
+
+<p>attr() - 允许 CSS 接受属性值的控制</p>
+<h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><p>属性选择器:<br><code>[att]</code> - 含有这个属性的元素<br><code>[att=val]</code> - 属性值为 val 的元素<br><code>[att~=val]</code> - 属性值包含 val 的元素<br><code>[att|=val]</code> - 属性值以 val 开头的元素</p>
+<p>伪类选择器:<br>:nth-child vs :nth-last-child (从后往前倒着数)<br>:link - 未访问过的链接<br>:visited - 已经访问过的链接<br>:hover - 鼠标悬停的元素<br>:active - 用户正在激活的元素<br>:focus - 焦点落在的元素</p>
+<p>连接符号:<br>“空格”: 后代<br>“&gt;”: 子代<br>“~”: 后继, 后继节点指跟当前节点具有同一个父元素并出现在它之后的节点<br>“+”: 直接后继 (仅一个)</p>
+<p>伪元素:<br>::first-line - 伪元素必须出现在最内层的块级元素之内, 仅支持文本相关属性<br>::first-letter - 伪元素在所有标签之内, 仅支持文本相关属性<br>::before &amp; ::after - 必须指定 content 属性才会生效</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>行内元素附近出现不明空隙的原因: 代码格式中的换行和空格会被 HTML 当作空格文本, 跟行内元素混排<br>解决方案: 父元素设置 <code>font-size:0;</code></p>
+<h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><p>网页访问过程:<br>1. 浏览器首先使用 HTTP 协议或者 HTTPS 协议, 向服务端请求页面<br>2. 把请求回来的 HTML 代码 (<strong>流式的数据</strong>) 经过解析, 构建成 DOM 树<br>3. 计算 DOM 树上的 CSS 属性<br>4. 最后根据 CSS 属性对元素逐个进行渲染, 得到内存中的位图<br>5. 一个可选的步骤是对位图进行合成, 这会极大地增加后续绘制的速度<br>6. 合成之后, 再绘制到界面上<br>从构建 DOM 树开始, 都是一种流式处理, 即: 不需要等到上一步骤完全结束, 就开始处理上一步的输出</p>
+<h2 id="Http-请求"><a href="#Http-请求" class="headerlink" title="Http 请求"></a>Http 请求</h2><p>request:<br>第 1 行 request line: 请求方法, 请求路径, 请求协议和版本<br>第 2+ 行: 请求头<br>空行<br>剩余行: 请求体, 如表单数据等</p>
+<p>response:<br>第 1 行 response line: 协议版本, 状态码, 状态文本<br>第 2+ 行: 响应头<br>空行<br>剩余行: 响应体, 如 HTML</p>
+<p>HTTP Status code (状态码):</p>
+<ul>
+<li>1xx: 临时回应, 表示客户端请继续 (被浏览器 HTTP 库直接处理掉了)</li>
+<li>2xx: 请求成功<br>  200: 请求成功</li>
+<li>3xx: 表示请求的目标有变化, 希望客户端进一步处理<br>  301 &amp; 302: 永久性与临时性跳转, 即当前资源已经被转移<br>  304: 客户端的缓存无需更新, 会返回一个不含 body 的 304 状态</li>
+<li>4xx: 客户端请求错误<br>  403: 无权限<br>  404: 请求的页面不存在<br>  418: It’s a teapot. 这是一个彩蛋</li>
+<li>5xx: 服务端请求错误<br>  500: 服务端错误<br>  503: 服务端暂时性错误, 可以一会再试</li>
+</ul>
+<p>HTTPS:<br>HTTPS 有两个作用, 一是确定请求的目标服务端身份, 二是保证传输的数据不会被网络中间节点窃听或者篡改<br>HTTPS 首先与服务端建立一条 TLS 加密通道, 随后使用加密通道来传输 HTTP 的内容</p>
+<p>HTTP 2:<br>HTTP 2.0 是 HTTP 1.1 的升级版本, 最大的改进有两点: 一是支持服务端推送, 二是支持 TCP 连接复用</p>
+<h2 id="HTML-解析与-DOM-树构建"><a href="#HTML-解析与-DOM-树构建" class="headerlink" title="HTML 解析与 DOM 树构建"></a>HTML 解析与 DOM 树构建</h2><p>通过状态机解析 HTML 流, 将其拆分成词 (token)<br>例如 <code>&lt;p class=&quot;a&quot;&gt;text&lt;/p&gt;</code> 解析成:<br><code>&lt;p</code> - “标签开始” 的开始<br><code>class=&quot;a&quot;</code> - 属性<br><code>&gt;</code> - “标签开始” 的结束<br><code>text</code> - 文本<br><code>&lt;/p&gt;</code> - “标签结束”</p>
+<p>用栈实现 DOM 树的构建:<br>- 栈顶元素就是当前节点<br>- 遇到属性, 就添加到当前节点<br>- 遇到文本节点, 如果当前节点是文本节点, 则跟文本节点合并, 否则入栈成为当前节点的子节点<br>- 遇到注释节点, 作为当前节点的子节点<br>- 遇到 tag start 就入栈一个节点, 当前节点就是这个节点的父节点<br>- 遇到 tag end 就出栈一个节点</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/19/IntersectionObserver API/" rel="next" title="IntersectionObserver API">
+                <i class="fa fa-chevron-left"></i> IntersectionObserver API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/10/24/算法知识点总结/" rel="prev" title="算法知识点总结">
+                算法知识点总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">随云の遐想</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript"><span class="nav-number">2.</span> <span class="nav-text">JavaScript</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类型"><span class="nav-number">2.1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">2.2.</span> <span class="nav-text">对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型系统"><span class="nav-number">2.3.</span> <span class="nav-text">原型系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行"><span class="nav-number">2.4.</span> <span class="nav-text">执行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步"><span class="nav-number">2.4.1.</span> <span class="nav-text">异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域与函数"><span class="nav-number">2.4.2.</span> <span class="nav-text">作用域与函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">2.5.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法"><span class="nav-number">2.6.</span> <span class="nav-text">词法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语法"><span class="nav-number">2.7.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于分号"><span class="nav-number">2.7.1.</span> <span class="nav-text">关于分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本-amp-模块"><span class="nav-number">2.7.2.</span> <span class="nav-text">脚本 &amp; 模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预处理机制"><span class="nav-number">2.7.3.</span> <span class="nav-text">预处理机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令序言"><span class="nav-number">2.7.4.</span> <span class="nav-text">指令序言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符"><span class="nav-number">2.7.5.</span> <span class="nav-text">运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-number">3.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语义化标签"><span class="nav-number">3.1.</span> <span class="nav-text">语义化标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元信息类标签"><span class="nav-number">3.2.</span> <span class="nav-text">元信息类标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">3.3.</span> <span class="nav-text">链接</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Link-标签"><span class="nav-number">3.3.1.</span> <span class="nav-text">Link 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a-标签"><span class="nav-number">3.3.2.</span> <span class="nav-text">a 标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#area-标签"><span class="nav-number">3.3.3.</span> <span class="nav-text">area 标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本实体"><span class="nav-number">3.4.</span> <span class="nav-text">文本实体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARIA"><span class="nav-number">3.5.</span> <span class="nav-text">ARIA</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">4.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语法-1"><span class="nav-number">4.1.</span> <span class="nav-text">@ 语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算函数"><span class="nav-number">4.2.</span> <span class="nav-text">计算函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择器"><span class="nav-number">4.3.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布局"><span class="nav-number">4.4.</span> <span class="nav-text">布局</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器"><span class="nav-number">5.</span> <span class="nav-text">浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Http-请求"><span class="nav-number">5.1.</span> <span class="nav-text">Http 请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML-解析与-DOM-树构建"><span class="nav-number">5.2.</span> <span class="nav-text">HTML 解析与 DOM 树构建</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">随云の遐想</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
