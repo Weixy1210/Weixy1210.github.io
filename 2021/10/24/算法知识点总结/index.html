@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="世外桃源">
 <meta property="og:description" content="极客算法教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-11-29T12:48:22.996Z">
+<meta property="og:updated_time" content="2021-12-31T12:08:12.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法知识点总结">
 <meta name="twitter:description" content="极客算法教程">
@@ -353,13 +353,13 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TreeNode</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.val = val;</span><br><span class="line">    <span class="keyword">this</span>.left = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.right = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="递归遍历树"><a href="#递归遍历树" class="headerlink" title="递归遍历树"></a>递归遍历树</h3><ol>
-<li><p>前序遍历 (根-左-右)</p>
+<li><p>前序遍历 (根-左-右) pre-order</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preorder</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">        process(root.val);</span><br><span class="line">        preorder(root.left);</span><br><span class="line">        preorder(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>中序遍历 (左-根-右)</p>
+<li><p>中序遍历 (左-根-右) in-order</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inorder</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">        inorder(root.left);</span><br><span class="line">        process(root.val);</span><br><span class="line">        inorder(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>后序遍历 (左-右-根)</p>
+<li><p>后序遍历 (左-右-根) post-order</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postorder</span>(<span class="params">root</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root) &#123;</span><br><span class="line">        postorder(root.left);</span><br><span class="line">        postorder(root.right);</span><br><span class="line">        process(root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
@@ -367,6 +367,18 @@
 <h3 id="二叉搜索树-BST"><a href="#二叉搜索树-BST" class="headerlink" title="二叉搜索树 (BST)"></a>二叉搜索树 (BST)</h3><p>BST 定义:<br>1. 左子树上所有节点的值均小于它的根节点的值<br>2. 右子树上所有节点的值均大于它的根节点的值<br>3. 以此类推: 左右子树也分别为二叉搜索树 (<strong>重复性</strong>)</p>
 <p>BST 的中序遍历为升序排列, 其查询与增删的操作都是 O(lgn)</p>
 <p>BST 删除节点 (非叶子节点):<br>1. 找到要删除的节点<br>2. 在该节点右子树找到最小值<br>3. 把最小值从原位置删除 (如果最小值不是叶子节点, 则递归), 替换到要删除的节点位置</p>
+<h2 id="平衡二叉树"><a href="#平衡二叉树" class="headerlink" title="平衡二叉树"></a>平衡二叉树</h2><p>在增删节点过程中保证二叉搜索树的二维结构, 确保其不会退化成一维链表</p>
+<h3 id="AVL-树-平衡二叉树"><a href="#AVL-树-平衡二叉树" class="headerlink" title="AVL 树 (平衡二叉树)"></a>AVL 树 (平衡二叉树)</h3><p>平衡因子: 左子树高度减去右子树高度的值在 -1, 0, 1 这个范围里</p>
+<p>缺点: 1. 每个节点需要存储平衡因子这个额外信息 2. 调整次数频繁, 维护成本较高</p>
+<p>通过旋转操作实现平衡:</p>
+<ol>
+<li>右右子树 -&gt; 左旋<br> A -right-&gt; B -right-&gt; C<br> 变更为:<br> B -left-&gt; A<br>   -right-&gt; C</li>
+<li>左左子树 -&gt; 右旋<br> A -left-&gt; B -left-&gt; C<br> 变更为:<br> B -left-&gt; C<br>   -right-&gt; A</li>
+<li>左右子树 -&gt; 左右旋<br> A -left-&gt; B -right-&gt; C<br> 第一次左旋变更为:<br> A -left-&gt; C -left-&gt; B<br> 第二次右旋变更为:<br> C -left-&gt; B<br>   -right-&gt; A</li>
+<li>右左子树 -&gt; 右左旋<br> A -right-&gt; B -left-&gt; C<br> 第一次右旋变更为:<br> A -right-&gt; C -right-&gt; B<br> 第二次左旋变更为:<br> C -left-&gt; A<br>   -right-&gt; B</li>
+</ol>
+<h3 id="红黑树-近似平衡二叉树"><a href="#红黑树-近似平衡二叉树" class="headerlink" title="红黑树 (近似平衡二叉树)"></a>红黑树 (近似平衡二叉树)</h3><p>确保任何一个结点的左右子树高度差小于 2 倍</p>
+<p>特征:<br>1. 每个结点非红即黑<br>2. 根结点是黑色的<br>3. 每个叶子结点 (空结点) 是黑色的<br>4. 不能有相邻的红色结点<br>5. 从任一结点到每个叶子结点的所有路径都包含相同数目的黑色结点</p>
 <h3 id="字典树-Trie"><a href="#字典树-Trie" class="headerlink" title="字典树 (Trie)"></a>字典树 (Trie)</h3><p>多叉树, 从根节点到叶子节点, 路径经过的字符连起来即构成单词</p>
 <p>核心思想: 空间换时间</p>
 <p>优点: 最大限度减少字符串比较, 查询效率高于哈希表 (利用字符串的公共前缀来降低查询时间的开销)</p>
@@ -406,11 +418,12 @@
 <li><p>启发式搜索 (A*)<br> 确定合适的估价函数来判断优先级, 优先级高的先搜索</p>
 </li>
 </ol>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态递推: 找到重复子问题, 计算局部最优解; 再通过递推, 不断淘汰次优解, 最终获得全局的最优解.</p>
+<h2 id="动态规划-动态递推"><a href="#动态规划-动态递推" class="headerlink" title="动态规划 - 动态递推"></a>动态规划 - 动态递推</h2><p>找到重复子问题, 计算局部最优解; 再通过递推, 不断淘汰次优解, 最终获得全局的最优解.</p>
+<p>动态规划 vs 递归 (分治):<br>    共性: <strong>寻找重复性</strong><br>    差异: 最优子结构, <strong>淘汰次优解</strong></p>
 <h2 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h2><p>每一步选择都采取当下最优选择, 从而获得全局最优结果 (选择不能回退)</p>
 <p>贪心算法的适用场景: 子问题的最优解可以递推到最终问题的最优解 (最优子结构)<br>例子: 零钱问题, 如果可选零钱具有整除关系则可用贪心, 否则只能回溯</p>
 <p>几种算法对比:<br>贪心 - 局部最优判断, 不能回退<br>回溯 - 尝试所有可能, 可以回退<br>动规 - 局部最优判断 + 存储中间过程, 可回退</p>
-
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2>
       
     </div>
     
@@ -440,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/02/14/重学前端/" rel="next" title="重学前端">
-                <i class="fa fa-chevron-left"></i> 重学前端
+              <a href="/2020/11/19/IntersectionObserver API/" rel="next" title="IntersectionObserver API">
+                <i class="fa fa-chevron-left"></i> IntersectionObserver API
               </a>
             
           </div>
@@ -551,7 +564,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -584,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度与空间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度与空间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组-链表-跳表"><span class="nav-number">2.1.</span> <span class="nav-text">数组, 链表, 跳表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-队列"><span class="nav-number">2.2.</span> <span class="nav-text">栈, 队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表-散列表"><span class="nav-number">2.3.</span> <span class="nav-text">哈希表 (散列表)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">2.4.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归遍历树"><span class="nav-number">2.4.1.</span> <span class="nav-text">递归遍历树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉搜索树-BST"><span class="nav-number">2.4.2.</span> <span class="nav-text">二叉搜索树 (BST)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典树-Trie"><span class="nav-number">2.4.3.</span> <span class="nav-text">字典树 (Trie)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">2.5.</span> <span class="nav-text">并查集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找"><span class="nav-number">3.1.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-通过函数体来进行的循环"><span class="nav-number">3.2.</span> <span class="nav-text">递归 - 通过函数体来进行的循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治"><span class="nav-number">3.2.1.</span> <span class="nav-text">分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回溯"><span class="nav-number">3.2.2.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">3.2.3.</span> <span class="nav-text">深度优先搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">3.2.4.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索优化"><span class="nav-number">3.2.5.</span> <span class="nav-text">搜索优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">3.3.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心"><span class="nav-number">3.4.</span> <span class="nav-text">贪心</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间复杂度与空间复杂度"><span class="nav-number">1.</span> <span class="nav-text">时间复杂度与空间复杂度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组-链表-跳表"><span class="nav-number">2.1.</span> <span class="nav-text">数组, 链表, 跳表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-队列"><span class="nav-number">2.2.</span> <span class="nav-text">栈, 队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表-散列表"><span class="nav-number">2.3.</span> <span class="nav-text">哈希表 (散列表)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树"><span class="nav-number">2.4.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#递归遍历树"><span class="nav-number">2.4.1.</span> <span class="nav-text">递归遍历树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二叉搜索树-BST"><span class="nav-number">2.4.2.</span> <span class="nav-text">二叉搜索树 (BST)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡二叉树"><span class="nav-number">2.5.</span> <span class="nav-text">平衡二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AVL-树-平衡二叉树"><span class="nav-number">2.5.1.</span> <span class="nav-text">AVL 树 (平衡二叉树)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#红黑树-近似平衡二叉树"><span class="nav-number">2.5.2.</span> <span class="nav-text">红黑树 (近似平衡二叉树)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典树-Trie"><span class="nav-number">2.5.3.</span> <span class="nav-text">字典树 (Trie)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">2.6.</span> <span class="nav-text">并查集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">3.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找"><span class="nav-number">3.1.</span> <span class="nav-text">二分查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-通过函数体来进行的循环"><span class="nav-number">3.2.</span> <span class="nav-text">递归 - 通过函数体来进行的循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治"><span class="nav-number">3.2.1.</span> <span class="nav-text">分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回溯"><span class="nav-number">3.2.2.</span> <span class="nav-text">回溯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">3.2.3.</span> <span class="nav-text">深度优先搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">3.2.4.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索优化"><span class="nav-number">3.2.5.</span> <span class="nav-text">搜索优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划-动态递推"><span class="nav-number">3.3.</span> <span class="nav-text">动态规划 - 动态递推</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心"><span class="nav-number">3.4.</span> <span class="nav-text">贪心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位运算"><span class="nav-number">3.5.</span> <span class="nav-text">位运算</span></a></li></ol></li></ol></div>
             
 
           </div>
