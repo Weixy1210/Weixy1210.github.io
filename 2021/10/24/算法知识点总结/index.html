@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="世外桃源">
 <meta property="og:description" content="极客算法教程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-31T12:08:12.140Z">
+<meta property="og:updated_time" content="2022-01-03T08:43:58.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法知识点总结">
 <meta name="twitter:description" content="极客算法教程">
@@ -372,10 +372,10 @@
 <p>缺点: 1. 每个节点需要存储平衡因子这个额外信息 2. 调整次数频繁, 维护成本较高</p>
 <p>通过旋转操作实现平衡:</p>
 <ol>
-<li>右右子树 -&gt; 左旋<br> A -right-&gt; B -right-&gt; C<br> 变更为:<br> B -left-&gt; A<br>   -right-&gt; C</li>
-<li>左左子树 -&gt; 右旋<br> A -left-&gt; B -left-&gt; C<br> 变更为:<br> B -left-&gt; C<br>   -right-&gt; A</li>
-<li>左右子树 -&gt; 左右旋<br> A -left-&gt; B -right-&gt; C<br> 第一次左旋变更为:<br> A -left-&gt; C -left-&gt; B<br> 第二次右旋变更为:<br> C -left-&gt; B<br>   -right-&gt; A</li>
-<li>右左子树 -&gt; 右左旋<br> A -right-&gt; B -left-&gt; C<br> 第一次右旋变更为:<br> A -right-&gt; C -right-&gt; B<br> 第二次左旋变更为:<br> C -left-&gt; A<br>   -right-&gt; B</li>
+<li>右右子树 -&gt; 左旋<br> A –(right)–&gt; B –(right)–&gt; C<br> 变更为:<br> B –(left)–&gt; A<br>   –(right)–&gt; C</li>
+<li>左左子树 -&gt; 右旋<br> A –(left)–&gt; B –(left)–&gt; C<br> 变更为:<br> B –(left)–&gt; C<br>   –(right)–&gt; A</li>
+<li>左右子树 -&gt; 左右旋<br> A –(left)–&gt; B –(right)–&gt; C<br> 第一次左旋变更为:<br> A –(left)–&gt; C –(left)–&gt; B<br> 第二次右旋变更为:<br> C –(left)–&gt; B<br>   –(right)–&gt; A</li>
+<li>右左子树 -&gt; 右左旋<br> A –(right)–&gt; B –(left)–&gt; C<br> 第一次右旋变更为:<br> A –(right)–&gt; C –(right)–&gt; B<br> 第二次左旋变更为:<br> C –(left)–&gt; A<br>   –(right)–&gt; B</li>
 </ol>
 <h3 id="红黑树-近似平衡二叉树"><a href="#红黑树-近似平衡二叉树" class="headerlink" title="红黑树 (近似平衡二叉树)"></a>红黑树 (近似平衡二叉树)</h3><p>确保任何一个结点的左右子树高度差小于 2 倍</p>
 <p>特征:<br>1. 每个结点非红即黑<br>2. 根结点是黑色的<br>3. 每个叶子结点 (空结点) 是黑色的<br>4. 不能有相邻的红色结点<br>5. 从任一结点到每个叶子结点的所有路径都包含相同数目的黑色结点</p>
@@ -617,7 +617,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

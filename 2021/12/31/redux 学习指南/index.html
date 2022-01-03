@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="redux,">
+  <meta name="keywords" content="Redux,">
 
 
 
@@ -80,17 +80,19 @@
 
 
 <meta name="description" content="文章笔记: 阮一峰 Redux 教程 (一) 阮一峰 Redux 教程 (二) 阮一峰 Redux 教程 (三)">
-<meta name="keywords" content="redux">
+<meta name="keywords" content="Redux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redux 学习指南">
-<meta property="og:url" content="http://yoursite.com/2021/12/31/redux 学习指南/index.html">
+<meta property="og:title" content="Redux 学习指南">
+<meta property="og:url" content="http://yoursite.com/2021/12/31/Redux 学习指南/index.html">
 <meta property="og:site_name" content="世外桃源">
 <meta property="og:description" content="文章笔记: 阮一峰 Redux 教程 (一) 阮一峰 Redux 教程 (二) 阮一峰 Redux 教程 (三)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-12-31T13:07:01.821Z">
+<meta property="og:image" content="http://yoursite.com/image/redux-flow.jpg">
+<meta property="og:updated_time" content="2022-01-03T09:30:30.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redux 学习指南">
+<meta name="twitter:title" content="Redux 学习指南">
 <meta name="twitter:description" content="文章笔记: 阮一峰 Redux 教程 (一) 阮一峰 Redux 教程 (二) 阮一峰 Redux 教程 (三)">
+<meta name="twitter:image" content="http://yoursite.com/image/redux-flow.jpg">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/12/31/redux 学习指南/">
+  <link rel="canonical" href="http://yoursite.com/2021/12/31/Redux 学习指南/">
 
 
 
 
 
-  <title>redux 学习指南 | 世外桃源</title>
+  <title>Redux 学习指南 | 世外桃源</title>
   
 
 
@@ -233,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/31/redux 学习指南/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/31/Redux 学习指南/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="随云の遐想">
@@ -250,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">redux 学习指南</h1>
+          <h1 class="post-title" itemprop="name headline">Redux 学习指南</h1>
         
 
         <div class="post-meta">
@@ -325,21 +327,72 @@
         <p>文章笔记: <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">阮一峰 Redux 教程 (一)</a> <a href="https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html" target="_blank" rel="noopener">阮一峰 Redux 教程 (二)</a> <a href="https://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html" target="_blank" rel="noopener">阮一峰 Redux 教程 (三)</a></p>
 <a id="more"></a>
 
-<h1 id="Part1-redux-基础"><a href="#Part1-redux-基础" class="headerlink" title="Part1 redux 基础"></a>Part1 redux 基础</h1><h2 id="redux-基本概念"><a href="#redux-基本概念" class="headerlink" title="redux 基本概念"></a>redux 基本概念</h2><ol>
-<li><p>store</p>
+<h1 id="Redux-基础"><a href="#Redux-基础" class="headerlink" title="Redux 基础"></a>Redux 基础</h1><h2 id="Redux-设计思想"><a href="#Redux-设计思想" class="headerlink" title="Redux 设计思想"></a>Redux 设计思想</h2><p>1. Web 应用是一个状态机, 视图与状态是一一对应的<br>2. 所有的状态保存在一个对象里面</p>
+<h2 id="Redux-工作流程"><a href="#Redux-工作流程" class="headerlink" title="Redux 工作流程"></a>Redux 工作流程</h2><img src="/image/redux-flow.jpg">
+
+<ol>
+<li><p>Store</p>
+<p> store 是保存数据的容器, 一个应用只能有一个 store. 通过 <code>store.getState()</code> 可以获得当前时刻的容器状态 (state, 类似于容器的快照), 而视图则根据 state 情况展现.</p>
 </li>
-<li><p>state</p>
+<li><p>Action</p>
+<p> 当用户操作视图, 产生 action, 例如增加 5 次计数:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    type: <span class="string">'ADD_COUNT'</span>,</span><br><span class="line">    payload: <span class="number">5</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// type, payload 都是一种命名规范</span></span><br></pre></td></tr></table></figure>
+
+<p> 视图通过 <code>store.dispatch({type: &#39;ADD_COUNT&#39;, payload: 5})</code> 将 action 发送给 store.</p>
+<p> action creator 是帮助生成 action 的函数, 例如:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addCount</span>(<span class="params">count</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        type: <span class="string">'ADD_COUNT'</span>,</span><br><span class="line">        payload: count,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 这样视图发送 action 的方式就变成: <code>store.dispatch(addCount(5))</code></p>
 </li>
-<li><p>action</p>
+<li><p>Reducer</p>
+<p> store 接收到 action 后, 必须给出一个新的 State 去指导视图的变化. store 会将当前的 state 与接收到的 action 一起交给 reducer 处理, reducer 处理后会返回 store 一个新的 state:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> defaultState = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span> (<span class="params">state = defaultState, action</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD_COUNT'</span>:</span><br><span class="line">            <span class="keyword">return</span> state + action.payload;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// store.dispatch 的模拟:</span></span><br><span class="line"><span class="keyword">const</span> newState = reducer(store.getState(), &#123;</span><br><span class="line">    type: <span class="string">'ADD_COUNT'</span>,</span><br><span class="line">    payload: count,</span><br><span class="line">&#125;);</span><br><span class="line">store &lt;--(update)-- newState;</span><br></pre></td></tr></table></figure>
+
+<p> reducer 是纯函数, 即, 只要是同样的输入, 必定得到同样的输出. 因此:</p>
+<ul>
+<li><p>不得改写参数, 即: reducer 不改变 state, 只生成全新的 state</p>
 </li>
-<li><p>dispatch</p>
+<li><p>不能调用系统 I/O 的 API</p>
 </li>
-<li><p>reducer</p>
+<li><p>不能调用 <code>Date.now()</code> 或者 <code>Math.random()</code> 等不纯的方法, 因为每次会得到不一样的结果</p>
+<p>* reducer 的命名: reducer 可以作为数组的 reduce 方法的参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actions = [</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">'ADD'</span>, <span class="attr">payload</span>: <span class="number">0</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">'ADD'</span>, <span class="attr">payload</span>: <span class="number">1</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">'ADD'</span>, <span class="attr">payload</span>: <span class="number">2</span> &#125;,</span><br><span class="line">];</span><br><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state = <span class="number">0</span>, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span>(action.type) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'ADD'</span>:</span><br><span class="line">            <span class="keyword">return</span> state + action.payload;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> state;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> total = actions.reduce(reducer, <span class="number">0</span>); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>subscribe</p>
+</ul>
+</li>
+<li><p>createStore</p>
+<p> store.dispatch 可以自动触发 reducer 的执行, 可见创建 store 的时候需要知道 reducer:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer, initialState[optional]);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>监听</p>
+<p> 工作流程图中还有一点没有明确, 当 store 从 reducer 处获得新的 state 完成更新后, 是如何通知视图变化的?</p>
+<p> 这就需要通过 <code>store.subscribe()</code> 设置监听函数, 让视图响应 store 的变化:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> unsubscribe = store.subscribe(<span class="function"><span class="params">()</span> =&gt;</span></span><br><span class="line">    <span class="keyword">const</span> newState = store.getState();</span><br><span class="line">    component.setState(newState); <span class="comment">// 假设 react</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 接触监听</span></span><br><span class="line">unsubscribe();</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-<h2 id="createStore-的简单实现"><a href="#createStore-的简单实现" class="headerlink" title="createStore 的简单实现"></a>createStore 的简单实现</h2><h2 id="reducer-拆分"><a href="#reducer-拆分" class="headerlink" title="reducer 拆分"></a>reducer 拆分</h2><h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2>
+<h2 id="Redux-API-拆解"><a href="#Redux-API-拆解" class="headerlink" title="Redux API 拆解"></a>Redux API 拆解</h2><ol>
+<li><p>createStore 的简单实现</p>
+<p> store 主要输出了 getState, dispatch, subscribe 三个功能</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> createStore = <span class="function">(<span class="params">reducer, initState</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> state = initState;</span><br><span class="line">    <span class="keyword">let</span> listeners = [];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> getState = <span class="function"><span class="params">()</span> =&gt;</span> state;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">        state = reducer(state, action);</span><br><span class="line">        listeners.forEach(<span class="function"><span class="params">listener</span> =&gt;</span> listener());</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> subscribe = <span class="function">(<span class="params">listener</span>) =&gt;</span> &#123;</span><br><span class="line">        listeners.push(listener);</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            listeners = listeners.filter(<span class="function"><span class="params">l</span> =&gt;</span> l !== listener);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    dispatch(&#123;&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123; getState, dispatch, subscribe &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>combineReducers</p>
+<p> reducer 通常非常庞大, 可以基于 store 对象的属性进行拆分, 并通过 combineReducers 合并</p>
+<p> 例如对于一个结构为 <code>{ a: value1, b: value2, c: value3 }</code> 的 store, 其 reducer 可以为:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reducer = <span class="function">(<span class="params">state, action</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        a: reducerA(state.a, action),</span><br><span class="line">        b: reducerB(state.b, action),</span><br><span class="line">        c: reducerC(state.c, action),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// reducerA, reducerB, reducerC 分别为其 a, b, c 属性的专属 reducer</span></span><br></pre></td></tr></table></figure>
+
+<p> 用 combineReducers 方法就变成:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">const</span> reducer = combineReducers(&#123;</span><br><span class="line">    a: reducerA,</span><br><span class="line">    b: reducerB,</span><br><span class="line">    c: reducerC,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p> 如果 reducer 与属性名称命名一致, 则简化为:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; combineReducers &#125; <span class="keyword">from</span> <span class="string">'redux'</span>;</span><br><span class="line"><span class="keyword">const</span> reducer = combineReducers(&#123;a, b, c&#125;);</span><br><span class="line"><span class="comment">// 注意: 这里的 a, b, c 既是 store 对象的属性名称也是属性对应 reducer 方法的名称</span></span><br></pre></td></tr></table></figure>
+
+<p> 由此, combineReducers 的简单实现如下:</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> combineReducers = <span class="function"><span class="params">reducers</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">state = &#123;&#125;, action</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.keys(reducers).reduce(</span><br><span class="line">            (nextState, key) =&gt; &#123;</span><br><span class="line">                nextState[key] = reducers[key](state[key], action);</span><br><span class="line">                <span class="keyword">return</span> nextState;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;&#125; </span><br><span class="line">        );</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
       
     </div>
     
@@ -356,7 +409,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/redux/" rel="tag"># redux</a>
+            <a href="/tags/Redux/" rel="tag"># Redux</a>
           
         </div>
       
@@ -509,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Part1-redux-基础"><span class="nav-number">1.</span> <span class="nav-text">Part1 redux 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">redux 基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#createStore-的简单实现"><span class="nav-number">1.2.</span> <span class="nav-text">createStore 的简单实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reducer-拆分"><span class="nav-number">1.3.</span> <span class="nav-text">reducer 拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流程"><span class="nav-number">1.4.</span> <span class="nav-text">工作流程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux-基础"><span class="nav-number">1.</span> <span class="nav-text">Redux 基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux-设计思想"><span class="nav-number">1.1.</span> <span class="nav-text">Redux 设计思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux-工作流程"><span class="nav-number">1.2.</span> <span class="nav-text">Redux 工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux-API-拆解"><span class="nav-number">1.3.</span> <span class="nav-text">Redux API 拆解</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -529,7 +582,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
