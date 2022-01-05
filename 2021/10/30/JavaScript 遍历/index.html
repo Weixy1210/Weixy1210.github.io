@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="世外桃源">
 <meta property="og:description" content="如果遍历数组时更改数组长度, 不同遍历方法会有不同应对 (当然我觉得这种骚操作还是少做)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-11-03T14:25:05.243Z">
+<meta property="og:updated_time" content="2022-01-05T15:01:18.485Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 遍历">
 <meta name="twitter:description" content="如果遍历数组时更改数组长度, 不同遍历方法会有不同应对 (当然我觉得这种骚操作还是少做)">
@@ -358,7 +358,7 @@
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">arr.custom = <span class="string">'custom'</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">    arr[i] = <span class="string">'change'</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出: change, change, change</span></span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br><span class="line"><span class="comment">// 输出: ['change', 'change', custom: 'change']</span></span><br></pre></td></tr></table></figure>
 
-<p>“for in” 原理: 取出对象的所有属性名进行遍历, 所以可遍历出自定义属性.<br>另外, 对于没有值的属性不会取出 (遍历数组时与基础 for 循环的差别), 所以遍历稀疏数组会自动跳过无值的位置.</p>
+<p>“for in” 原理: 取出对象的所有属性名进行遍历, 所以可遍历出自定义属性.<br>另外, 对于没有值的属性不会取出 (遍历数组时与基础 for 循环的差别) (forEach 也有这个过滤空值的特性), 所以遍历稀疏数组会自动跳过无值的位置.</p>
 
       
     </div>
